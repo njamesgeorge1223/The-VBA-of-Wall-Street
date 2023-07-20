@@ -153,7 +153,7 @@ End Sub ' This statement ends the macro, SummarizeStocksMacro.
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '       This subrotuine sets the font type and font size for the entire worksheet.
+ '       This subroutine sets the font type and font size for the entire worksheet.
  '
  '  Subroutine Parameters:
  '
@@ -578,7 +578,7 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
     
 
     ' These lines of code declare variables for the original data record.  The program uses
-    ' these values rto calculate the summary table record.
+    ' these values to calculate the summary table record.
     
     Dim currentTickerNameLocalStringVariable As String
     
@@ -881,7 +881,7 @@ End Function ' This statement ends the private function, CalculatePercentChangeP
  '
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal    tickerNameParameterStringVartiable
+ '  ByVal    tickerNameParameterStringVariable
  '                                          This parameter holds the name of the stock ticker.
  '  ByVal    openingPriceParameterCurrencyVariable
  '                                          This parameter holds the first opening price for this
@@ -905,7 +905,7 @@ End Function ' This statement ends the private function, CalculatePercentChangeP
  '******************************************************************************************/
 
 Private Sub CreateSummaryTableRowPrivateSubRoutine( _
-    ByVal tickerNameParameterStringVartiable As String, _
+    ByVal tickerNameParameterStringVariable As String, _
     ByVal openingPriceParameterCurrencyVariable As Currency, _
     ByVal totalStockVolumeParameterVariantVariable As Variant, _
     ByVal summaryRowParameterLongVariable As Long, _
@@ -945,7 +945,7 @@ Private Sub CreateSummaryTableRowPrivateSubRoutine( _
     Worksheets(ActiveSheet.Name).Cells( _
         summaryRowParameterLongVariable, _
         ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value _
-            = tickerNameParameterStringVartiable
+            = tickerNameParameterStringVariable
             
     Worksheets(ActiveSheet.Name).Cells( _
         summaryRowParameterLongVariable, _
