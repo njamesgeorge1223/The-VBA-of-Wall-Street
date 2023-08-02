@@ -1,4 +1,3 @@
 # VBA-challenge
-Week #2 Homework
 
-In this repostiory, I placed my VBA spreadsheet and files for Week #2 homework.
+This repostiory, contains a VBA module file, macro-enabled Excel file with macro and input data, and several screenshots of the results.
