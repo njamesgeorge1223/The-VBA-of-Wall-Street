@@ -4,17 +4,19 @@ Attribute VB_Name = "Module1"
  '  File Name:  main.c
  '
  '  File Description:
- '      The file contains the macro, SummarizeStocksMacro, which takes original stock data
- '      in the spreadsheet, reformats the spreadsheet, and generates a summary data from the data.
+ '      The file contains the macro, SummarizeStocksMacro, which takes original 
+ '      stock data in the spreadsheet, reformats the spreadsheet, and generates 
+ '      a summary data from the data.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         NJG
+ '  07/19/2023         Initial Development                      NJG
  '
 '*******************************************************************************************/
 
-' These are the global enumerations that identify the rows and columns in the original and summary data.
+' These are the global enumerations that identify the rows and columns 
+' in the original and summary data.
 
 Enum RowGlobalEnumeration
     
@@ -68,17 +70,19 @@ Enum ColumnGlobalEnumeration
 End Enum
 
 
-' These global constants specifies substring lengths with the date string in the original data.
-' The date string format is YYYYMMDD.
+' These global constants specifies substring lengths with the date string 
+' in the original data.  The date string format is YYYYMMDD.
 
 Global Const GLOBAL_CONSTANT_YEAR_LENGTH As Integer = 4
 
 Global Const GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH As Integer = 2
 
 
-' This global variable holds the value of the number of rows in the original data.
+' This global variable holds the value of the number of rows in the original 
+' data.
 
 Global lastDataRowGlobalLongVariable As Long
+
 
 '*******************************************************************************************
  '
@@ -90,11 +94,11 @@ Global lastDataRowGlobalLongVariable As Long
  '
  '          1) The ticker symbol
  '
- '          2) Yearly change from the opening price at the beginning of a given year
- '              to the closing price at the end of that year.
+ '          2) Yearly change from the opening price at the beginning of 
+ '             a given year to the closing price at the end of that year.
  '
- '          3) The percentage change from the opening price at the beginning of
- '              a given year to the closing price at the end of that year.
+ '          3) The percentage change from the opening price at the beginning 
+ '              of a given year to the closing price at the end of that year.
  '
  '          4) The total stock volume of the stock.
  '
@@ -105,9 +109,9 @@ Global lastDataRowGlobalLongVariable As Long
  '  n/a       n/a                      n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -146,6 +150,7 @@ Sub SummarizeStocksMacro()
 
 End Sub ' This statement ends the macro, SummarizeStocksMacro.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  FormatEntireWorkSheetPrivateSubRoutine
@@ -157,14 +162,14 @@ End Sub ' This statement ends the macro, SummarizeStocksMacro.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -180,6 +185,7 @@ Private Sub FormatEntireWorkSheetPrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, FormatEntireWorkSheetPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  FormatOriginalDataPrivateSubRoutine
@@ -191,21 +197,22 @@ End Sub ' This statement ends the private subroutine, FormatEntireWorkSheetPriva
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
 Private Sub FormatOriginalDataPrivateSubRoutine()
 
 
-    ' If the first value in the date column is a string, the subroutine converts all its values to Date type.
+    ' If the first value in the date column is a string, the subroutine converts
+    ' all its values to Date type.
 
     If VarType( _
         Worksheets(ActiveSheet.Name).Cells( _
@@ -270,6 +277,7 @@ Private Sub FormatOriginalDataPrivateSubRoutine()
     
 End Sub ' This statement ends the private subroutine, FormatOriginalDataPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  ChangeStringToDateInDateColumnPrivateSubRoutine
@@ -277,27 +285,30 @@ End Sub ' This statement ends the private subroutine, FormatOriginalDataPrivateS
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '       This subroutine changes the text strings in the original data date column to a date type.
+ '       This subroutine changes the text strings in the original data date column 
+ '       to a date type.
  '
  '  Subroutine Parameters:
  '
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a      n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
 Private Sub ChangeStringToDateInDateColumnPrivateSubRoutine()
 
+
     '  These lines of code declare variables for the current date.
     
     Dim dateLocalDateVariable As Date
-    
+
+
     ' These lines of code declare variables for the current year, month, and day.
     
     Dim yearLocalIntegerVariable As Integer
@@ -305,7 +316,8 @@ Private Sub ChangeStringToDateInDateColumnPrivateSubRoutine()
     Dim monthLocalIntegerVariable As Integer
     
     Dim dayLocalIntegerVariable As Integer
-    
+
+
     ' These lines of code declare variables for the start indexes in the date string.
     
     Dim yearStartIndexIntegerVariable As Integer
@@ -378,6 +390,7 @@ Private Sub ChangeStringToDateInDateColumnPrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, ChangeStringToDateInDateColumnPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  SetUpTitlesForSummaryDataPrivateSubRoutine
@@ -389,14 +402,14 @@ End Sub ' This statement ends the private subroutine, ChangeStringToDateInDateCo
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -426,6 +439,7 @@ Private Sub SetUpTitlesForSummaryDataPrivateSubRoutine()
 
 End Sub  ' This statement ends the public subroutine, SetUpTitlesForSummaryDataPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  FormatSummaryDataPrivateSubRoutine
@@ -437,14 +451,14 @@ End Sub  ' This statement ends the public subroutine, SetUpTitlesForSummaryDataP
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -502,6 +516,7 @@ Private Sub FormatSummaryDataPrivateSubRoutine()
     
 End Sub ' This statement ends the private subroutine, FormatSummaryDataPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  FormatTitlesPrivateSubRoutine
@@ -509,19 +524,19 @@ End Sub ' This statement ends the private subroutine, FormatSummaryDataPrivateSu
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '       This subroutine sets the format for the row containing titles for both the original data
- '       and the summarized data.
+ '       This subroutine sets the format for the row containing titles for both 
+ '       the original data and the summarized data.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -546,6 +561,7 @@ Private Sub FormatTitlesPrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, FormatTitlesPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  CreateSummaryTablePrivateSubRoutine
@@ -557,14 +573,14 @@ End Sub ' This statement ends the private subroutine, FormatTitlesPrivateSubRout
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a              n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -577,8 +593,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
     Dim firstRowLocalLongVariable As Long
     
 
-    ' These lines of code declare variables for the original data record.  The program uses
-    ' these values to calculate the summary table record.
+    ' These lines of code declare variables for the original data record. 
+    ' The program uses these values to calculate the summary table record.
     
     Dim currentTickerNameLocalStringVariable As String
     
@@ -589,7 +605,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
     Dim totalStockVolumeLocalVariantVariable As Variant
     
     
-    ' This line of code declares the variable for the row index for a summary table index.
+    ' This line of code declares the variable for the row index for a summary 
+    ' table index.
     
     Dim summaryTableRowLocalLongVariable As Long
     
@@ -599,7 +616,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
     SetUpTitlesForSummaryDataPrivateSubRoutine
     
     
-    ' These lines of code initialize variables with information from the first row of the original data.
+    ' These lines of code initialize variables with information from the first
+    ' row of the original data.
     
     currentTickerNameLocalStringVariable _
         = Worksheets(ActiveSheet.Name).Cells( _
@@ -617,7 +635,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
                 ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
                 
     
-    ' These lines of code set the initial row indices for the original data and summary tables.
+    ' These lines of code set the initial row indices for the original data 
+    ' and summary tables.
     
     firstRowLocalLongVariable _
         = RowGlobalEnumeration.ENUM_K_FIRST_DATA + 1
@@ -626,8 +645,9 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
         = RowGlobalEnumeration.ENUM_K_FIRST_DATA
  
  
-    ' This repetition loop runs through all the rows of the original data and generates the summary table.
-    ' The loop starts with the second row of original data.
+    ' This repetition loop runs through all the rows of the original data and
+    ' generates the summary table.  The loop starts with the second row of 
+    ' original data.
 
     For originalRowCounterVariable = firstRowLocalLongVariable To lastDataRowGlobalLongVariable
     
@@ -637,7 +657,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
                     = currentTickerNameLocalStringVariable Then
         
         
-            ' If the ticker name is the same, this line of code adds the current stock volume to the total.
+            ' If the ticker name is the same, this line of code adds the current
+            ' stock volume to the total.
                                     
             totalStockVolumeLocalVariantVariable _
                 = totalStockVolumeLocalVariantVariable + _
@@ -646,7 +667,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
                             ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
                             
                             
-            ' If the loop has reached the last row the program creates a summary table record.
+            ' If the loop has reached the last row the program creates a summary 
+            ' table record.
         
             If originalRowCounterVariable = lastDataRowGlobalLongVariable Then
                                            
@@ -666,7 +688,8 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
         
             If originalRowCounterVariable <> lastDataRowGlobalLongVariable Then
             
-                ' If the current ticker does not match the previous ticker, the program creates a record.
+                ' If the current ticker does not match the previous ticker, the program 
+                ' creates a record.
             
                 CreateSummaryTableRowPrivateSubRoutine _
                     currentTickerNameLocalStringVariable, _
@@ -695,14 +718,16 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
                             ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
             
                 
-               '  This line of code increases the summary table row index by one for the next record.
+               ' This line of code increases the summary table row index by one for
+               ' the next record.
             
                 summaryTableRowLocalLongVariable _
                     = summaryTableRowLocalLongVariable + 1
                         
             Else
             
-                ' These lines of code initialize variables with information from the last row of the original data.
+                ' These lines of code initialize variables with information from the 
+                ' last row of the original data.
     
                 currentTickerNameLocalStringVariable _
                     = Worksheets(ActiveSheet.Name).Cells( _
@@ -741,6 +766,7 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, CreateSummaryTablePrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Function Name:  CalculateYearlyChangePrivateFunction
@@ -756,14 +782,16 @@ End Sub ' This statement ends the private subroutine, CreateSummaryTablePrivateS
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal   openingPriceParameterDoubleVariable
- '                                          This parameter holds the first opening price of a ticker.
+ '                                          This parameter holds the first opening price 
+ '                                          of a ticker.
  '  ByVal   closingPriceParameterDoubleVariable
- '                                          This parameter holds the last closing price of a ticker.
+ '                                          This parameter holds the last closing price 
+ '                                          of a ticker.
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -778,6 +806,7 @@ Private Function CalculateYearlyChangePrivateFunction( _
 
 
 End Function ' This statement ends the private function, CalculateYearlyChangePrivateFunction.
+
 
 '*******************************************************************************************
  '
@@ -794,13 +823,13 @@ End Function ' This statement ends the private function, CalculateYearlyChangePr
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal   rowIndexParameterIntegerVariable
- '                                          This parameter holds the row index for the current record
- '                                          in the summary table.
+ '                                          This parameter holds the row index for the 
+ '                                          current record in the summary table.
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -833,6 +862,7 @@ Private Sub FormatYearlyChangeCellPrivateSubRoutine( _
 
 End Sub ' This statement ends the private subroutine, FormatYearlyChangeCellPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Function Name:  CalculatePercentChangePrivateFunction
@@ -848,14 +878,16 @@ End Sub ' This statement ends the private subroutine, FormatYearlyChangeCellPriv
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal   openingPriceParameterDoubleVariable
- '                                          This parameter holds the first opening price of a ticker.
+ '                                          This parameter holds the first opening price 
+ '                                          of a ticker.
  '  ByVal   closingPriceParameterDoubleVariable
- '                                          This parameter holds the last closing price of a ticker.
+ '                                          This parameter holds the last closing price 
+ '                                          of a ticker.
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -864,9 +896,13 @@ Private Function CalculatePercentChangePrivateFunction( _
     ByVal closingPriceParameterDoubleVariable) _
         As Double
 
-    CalculatePercentChangePrivateFunction = (closingPriceParameterDoubleVariable - openingPriceParameterDoubleVariable) / openingPriceParameterDoubleVariable
+
+    CalculatePercentChangePrivateFunction _
+         = (closingPriceParameterDoubleVariable - openingPriceParameterDoubleVariable) / openingPriceParameterDoubleVariable
+
 
 End Function ' This statement ends the private function, CalculatePercentChangePrivateFunction.
+
 
 '*******************************************************************************************
  '
@@ -879,28 +915,28 @@ End Function ' This statement ends the private function, CalculatePercentChangeP
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal    tickerNameParameterStringVariable
- '                                          This parameter holds the name of the stock ticker.
- '  ByVal    openingPriceParameterCurrencyVariable
- '                                          This parameter holds the first opening price for this
- '                                          stock ticker.
- '  ByVal    totalStockVolumeParameterVariantVariable
- '                                          This parameter holds the total stock volume for this
- '                                          stock ticker.
- '  ByVal    summaryRowParameterLongVariable
- '                                          This parameter holds the current summary table row index.
- '  ByVal    originalRowParameterLongVariable
- '                                          This parameter holds the current original data row index.
- '  ByVal    lastRowFlagParameterBooleanVariable
- '                                          This parameter indeicates whether the program has reached
- '                                          the last record or not.
+ '  ByVal   tickerNameParameterStringVariable
+ '                          This parameter holds the name of the stock ticker.
+ '  ByVal   openingPriceParameterCurrencyVariable
+ '                          This parameter holds the first opening price for this 
+ '                          stock ticker.
+ '  ByVal   totalStockVolumeParameterVariantVariable
+ '                          This parameter holds the total stock volume for this
+ '                          stock ticker.
+ '  ByVal   summaryRowParameterLongVariable
+ '                          This parameter holds the current summary table row index.
+ '  ByVal   originalRowParameterLongVariable
+ '                          This parameter holds the current original data row index.
+ '  ByVal   lastRowFlagParameterBooleanVariable
+ '                          This parameter indeicates whether the program has reached
+ '                          the last record or not.
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/19/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -913,15 +949,14 @@ Private Sub CreateSummaryTableRowPrivateSubRoutine( _
     ByVal lastRowFlagParameterBooleanVariable As Boolean)
 
 
-
     ' This line of code declares a variable for the closing price which is different
     ' based on whether the program has reached the last row or not in the original data
     
     Dim closingPriceLocalCurrencyVariable As Currency
 
 
-    ' If the program has not reached the last row the closing price comes from the previous row
-    ' in the original data; otherwise, the closing price comes from the current row.
+    ' If the program has not reached the last row the closing price comes from the previous 
+    ' row in the original data; otherwise, the closing price comes from the current row.
                   
     If lastRowFlagParameterBooleanVariable = False Then
             
@@ -971,6 +1006,7 @@ Private Sub CreateSummaryTableRowPrivateSubRoutine( _
 
 End Sub ' This statement ends the private subroutine, CreateSummaryTableRowPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  CreateChangeTablePrivateSubRoutine
@@ -978,19 +1014,19 @@ End Sub ' This statement ends the private subroutine, CreateSummaryTableRowPriva
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '      This subroutine creates a table that lists the tickers with the greatest percent change
- '      and the ticker with the greatest total stock volume.
+ '      This subroutine creates a table that lists the tickers with the greatest percent 
+ '      change and the ticker with the greatest total stock volume.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/20/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -1006,6 +1042,7 @@ Public Sub CreateChangeTablePrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, CreateChangeTablePrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  FormatChangeTableTitlesPrivateSubRoutine
@@ -1017,14 +1054,14 @@ End Sub ' This statement ends the private subroutine, CreateChangeTablePrivateSu
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/20/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -1085,6 +1122,7 @@ Private Sub FormatChangeTablePrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, FormatChangeTableTitlesPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  SetupChangeTableTitlesPrivateSubRoutine
@@ -1097,14 +1135,14 @@ End Sub ' This statement ends the private subroutine, FormatChangeTableTitlesPri
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/20/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
@@ -1144,6 +1182,7 @@ Private Sub SetupChangeTableTitlesPrivateSubRoutine()
 
 End Sub ' This statement ends the private subroutine, SetupChangeTableTitlesPrivateSubRoutine.
 
+
 '*******************************************************************************************
  '
  '  Subroutine Name:  CalculateChangeTableDataPrivateSubRoutine
@@ -1156,14 +1195,14 @@ End Sub ' This statement ends the private subroutine, SetupChangeTableTitlesPriv
  '
  '  Subroutine Parameters:
  '
- '  Type    Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                         Nicholas George (NJG)
+ '  07/20/2023         Initial Development                      Nicholas George (NJG)
  '
  '******************************************************************************************/
 
