@@ -1,1 +1,1 @@
-These two files are unprocessed and processed macro-enabled Excel files with the VBA challenge module loaded into them.  The purpose of these files is to demonstrate the capability and effectiveness of the VBA module.
+These two files are unprocessed and processed macro-enabled Excel files with the Equity Analysis Challenge module loaded into them.  The purpose of these files is to demonstrate the capability and effectiveness of the VBA module.
