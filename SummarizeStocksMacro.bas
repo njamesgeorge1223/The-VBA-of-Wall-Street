@@ -4,19 +4,18 @@ Attribute VB_Name = "Module1"
  '  File Name:  main.c
  '
  '  File Description:
- '      The file contains the macro, SummarizeStocksMacro, which takes original 
- '      stock data in the spreadsheet, reformats the spreadsheet, and generates 
- '      a summary data from the data.
+ '      The file contains the macro, SummarizeStocksMacro, which takes original stock data
+ '      in the spreadsheet, reformats the spreadsheet, and generates summary data.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      NJG
+ '  07/19/2023             Initial Development                                         N. James George
  '
 '*******************************************************************************************/
 
-' These are the global enumerations that identify the rows and columns 
-' in the original and summary data.
+' These are the global enumerations that identify the rows and columns in the original
+' and summary data.
 
 Enum RowGlobalEnumeration
     
@@ -70,19 +69,24 @@ Enum ColumnGlobalEnumeration
 End Enum
 
 
-' These global constants specifies substring lengths with the date string 
-' in the original data.  The date string format is YYYYMMDD.
+' These global constants specify substring lengths in the original data's the date strings:
+' the date string format is YYYYMMDD.
 
-Global Const GLOBAL_CONSTANT_YEAR_LENGTH As Integer = 4
+Global Const _
+    GLOBAL_CONSTANT_YEAR_LENGTH _
+        As Integer _
+= 4
 
-Global Const GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH As Integer = 2
+Global Const _
+    GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH _
+        As Integer _
+= 2
 
 
-' This global variable holds the value of the number of rows in the original 
-' data.
+' This global variable holds the value of the number of rows in the original data.
 
-Global lastDataRowGlobalLongVariable As Long
-
+Global _
+    lastDataRowGlobalLongVariable As Long
 
 '*******************************************************************************************
  '
@@ -94,11 +98,11 @@ Global lastDataRowGlobalLongVariable As Long
  '
  '          1) The ticker symbol
  '
- '          2) Yearly change from the opening price at the beginning of 
- '             a given year to the closing price at the end of that year.
+ '          2) Yearly change from the opening price at the beginning of a given year
+ '              to the closing price at the end of that year.
  '
- '          3) The percentage change from the opening price at the beginning 
- '              of a given year to the closing price at the end of that year.
+ '          3) The percentage change from the opening price at the beginning of
+ '              a given year to the closing price at the end of that year.
  '
  '          4) The total stock volume of the stock.
  '
@@ -109,20 +113,26 @@ Global lastDataRowGlobalLongVariable As Long
  '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Sub SummarizeStocksMacro()
+Sub _
+    SummarizeStocksMacro()
 
     ' This line of code assigns the last row index to the appropriate global variable.
     
     lastDataRowGlobalLongVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-                Rows.Count, _
-                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).End(xlUp).Row
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (Rows.Count, _
+                         ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                            .End _
+                                (xlUp) _
+                                    .Row
 
 
     ' These subroutines format the active spreadsheet.
@@ -147,9 +157,8 @@ Sub SummarizeStocksMacro()
     
     CreateChangeTablePrivateSubRoutine
 
-
-End Sub ' This statement ends the macro, SummarizeStocksMacro.
-
+End Sub ' This statement ends the macro,
+' SummarizeStocksMacro.
 
 '*******************************************************************************************
  '
@@ -162,29 +171,34 @@ End Sub ' This statement ends the macro, SummarizeStocksMacro.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub FormatEntireWorkSheetPrivateSubRoutine()
+Private Sub _
+        FormatEntireWorkSheetPrivateSubRoutine()
 
-
-    Worksheets(ActiveSheet.Name).Cells.Font.Name _
-        = "Garamond"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                .Font.Name _
+    = "Garamond"
     
-    Worksheets(ActiveSheet.Name).Cells.Font.Size _
-        = 14
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                .Font.Size _
+    = 14
 
-
-End Sub ' This statement ends the private subroutine, FormatEntireWorkSheetPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' FormatEntireWorkSheetPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -197,28 +211,31 @@ End Sub ' This statement ends the private subroutine, FormatEntireWorkSheetPriva
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub FormatOriginalDataPrivateSubRoutine()
+Private Sub _
+        FormatOriginalDataPrivateSubRoutine()
 
+    ' If the first value in the date column is a string, the subroutine converts all its values
+    ' to a Date type.
 
-    ' If the first value in the date column is a string, the subroutine converts
-    ' all its values to Date type.
-
-    If VarType( _
-        Worksheets(ActiveSheet.Name).Cells( _
-                RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).Value) _
-                    = vbString Then
+    If VarType _
+            (Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE) _
+                            .Value) _
+       = vbString Then
         
         ChangeStringToDateInDateColumnPrivateSubRoutine
     
@@ -227,56 +244,74 @@ Private Sub FormatOriginalDataPrivateSubRoutine()
 
     ' These lines of code change the column formats.
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).NumberFormat _
-            = "General"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                    .NumberFormat _
+    = "General"
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).NumberFormat _
-            = "mm/dd/yyyy"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE) _
+                    .NumberFormat _
+    = "mm/dd/yyyy"
             
     For indexLocalCounterVariable _
             = ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN _
                     To ColumnGlobalEnumeration.ENUM_K_ORIGINAL_CLOSE
     
-        Worksheets(ActiveSheet.Name).Columns( _
-            indexLocalCounterVariable _
-            ).NumberFormat _
-                = "$#,##0.00"
+        Worksheets _
+            (ActiveSheet.Name) _
+                .Columns _
+                    (indexLocalCounterVariable) _
+                        .NumberFormat _
+        = "$#,##0.00"
     
-    Next indexLocalCounterVariable ' This statement ends the for repetition loop.
+    Next indexLocalCounterVariable ' This statement ends the first repetition loop.
     
             
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).NumberFormat _
-        = "#,##0"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL) _
+                    .NumberFormat _
+    = "#,##0"
 
 
     ' These lines of code change the column widths.
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).ColumnWidth _
-            = 10
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                    .ColumnWidth _
+    = 10
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).ColumnWidth _
-            = 14
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE) _
+                    .ColumnWidth _
+    = 14
     
     
     For indexLocalCounterVariable _
             = ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN _
                     To ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL
 
-        Worksheets(ActiveSheet.Name).Columns( _
-            indexLocalCounterVariable _
-            ).ColumnWidth _
-                = 12
+        Worksheets _
+            (ActiveSheet.Name) _
+                .Columns _
+                    (indexLocalCounterVariable) _
+                        .ColumnWidth _
+        = 12
             
-    Next indexLocalCounterVariable ' This statement ends the for repetition loop.
+    Next indexLocalCounterVariable ' This statement ends the second repetition loop.
     
-    
-End Sub ' This statement ends the private subroutine, FormatOriginalDataPrivateSubRoutine.
-
+End Sub ' This stastement ends the private subroutine,
+' FormatOriginalDataPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -285,46 +320,58 @@ End Sub ' This statement ends the private subroutine, FormatOriginalDataPrivateS
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '       This subroutine changes the text strings in the original data date column 
- '       to a date type.
+ '       This subroutine changes the text strings in the original data date column
+ '        to a Date type.
  '
  '  Subroutine Parameters:
  '
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a      n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub ChangeStringToDateInDateColumnPrivateSubRoutine()
-
+Private Sub _
+    ChangeStringToDateInDateColumnPrivateSubRoutine()
 
     '  These lines of code declare variables for the current date.
     
-    Dim dateLocalDateVariable As Date
-
-
+    Dim _
+        dateLocalDateVariable _
+            As Date
+    
     ' These lines of code declare variables for the current year, month, and day.
     
-    Dim yearLocalIntegerVariable As Integer
+    Dim _
+        yearLocalIntegerVariable _
+            As Integer
     
-    Dim monthLocalIntegerVariable As Integer
+    Dim _
+        monthLocalIntegerVariable _
+            As Integer
     
-    Dim dayLocalIntegerVariable As Integer
-
-
+    Dim _
+        dayLocalIntegerVariable _
+            As Integer
+    
     ' These lines of code declare variables for the start indexes in the date string.
     
-    Dim yearStartIndexIntegerVariable As Integer
+    Dim _
+        yearStartIndexIntegerVariable _
+            As Integer
     
-    Dim monthStartIndexIntegerVariable As Integer
+    Dim _
+        monthStartIndexIntegerVariable _
+            As Integer
     
-    Dim dayStartIndexVariable As Integer
+    Dim _
+        dayStartIndexVariable _
+            As Integer
     
     
     ' These lines of code initialize variables for the start indices.
@@ -333,63 +380,79 @@ Private Sub ChangeStringToDateInDateColumnPrivateSubRoutine()
         = 1
         
     monthStartIndexIntegerVariable _
-        = yearStartIndexIntegerVariable + GLOBAL_CONSTANT_YEAR_LENGTH
+        = yearStartIndexIntegerVariable _
+           + GLOBAL_CONSTANT_YEAR_LENGTH
         
     dayStartIndexVariable _
-        = monthStartIndexIntegerVariable + GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH
+        = monthStartIndexIntegerVariable _
+            + GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH
     
     
-    ' These lines of code loop through all the values in the specified column and converts them to a date type.
+    ' These lines of code loop through all the values in the specified column
+    ' and converts them to a Date type.
     
     For rowLocalCounterVariable _
-        = RowGlobalEnumeration.ENUM_K_FIRST_DATA _
-                To lastDataRowGlobalLongVariable
+            = RowGlobalEnumeration.ENUM_K_FIRST_DATA _
+                    To lastDataRowGlobalLongVariable
     
-        ' These lines of code parse out the date from the string, YYYYMMDD, in the current cell and converts to a date type.
+        ' These lines of code parse out the date from the string, YYYYMMDD,
+        ' in the current cell and converts it to a Date type.
     
         yearLocalIntegerVariable _
-            = Mid(Worksheets(ActiveSheet.Name).Cells( _
-                    rowLocalCounterVariable, _
-                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE), _
-                    yearStartIndexIntegerVariable, _
-                    GLOBAL_CONSTANT_YEAR_LENGTH)
+            = Mid _
+                    (Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowLocalCounterVariable, _
+                                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE) _
+                                        .Value, _
+                                 yearStartIndexIntegerVariable, _
+                                 GLOBAL_CONSTANT_YEAR_LENGTH)
         
         monthLocalIntegerVariable _
-            = Mid(Worksheets(ActiveSheet.Name).Cells( _
-                    rowLocalCounterVariable, _
-                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).Value, _
-                    monthStartIndexIntegerVariable, _
-                    GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH)
+            = Mid _
+                    (Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowLocalCounterVariable, _
+                                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE) _
+                                        .Value, _
+                                 monthStartIndexIntegerVariable, _
+                                 GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH)
         
         dayLocalIntegerVariable _
-            = Mid(Worksheets(ActiveSheet.Name).Cells( _
-                    rowLocalCounterVariable, _
-                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).Value, _
-                    dayStartIndexVariable, _
-                    GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH)
+            = Mid _
+                    (Worksheets(ActiveSheet.Name) _
+                        .Cells _
+                            (rowLocalCounterVariable, _
+                                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE) _
+                                    .Value, _
+                             dayStartIndexVariable, _
+                             GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH)
         
-        ' This line of code takes the values for year, month, and day, converts them to a Date type, and assigns them
-        ' to the appropriate variable
+        ' This line of code takes the values for year, month, and day, converts them
+        ' to a Date type, then  assigns them to the appropriate variable
         
         dateLocalDateVariable _
-            = DateSerial( _
-                    yearLocalIntegerVariable, _
+            = DateSerial _
+                    (yearLocalIntegerVariable, _
                     monthLocalIntegerVariable, _
                     dayLocalIntegerVariable)
     
     
         ' This line of code assigns the new date value to the current cell.
         
-        Worksheets(ActiveSheet.Name).Cells( _
-            rowLocalCounterVariable, _
-            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).Value _
-                = dateLocalDateVariable
+        Worksheets _
+            (ActiveSheet.Name) _
+                .Cells _
+                    (rowLocalCounterVariable, _
+                        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_DATE).Value _
+        = dateLocalDateVariable
     
-    Next rowLocalCounterVariable ' This statement ends the for repetition loop.
+    Next rowLocalCounterVariable ' This statement ends the repetition loop.
 
-
-End Sub ' This statement ends the private subroutine, ChangeStringToDateInDateColumnPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' ChangeStringToDateInDateColumnPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -402,43 +465,54 @@ End Sub ' This statement ends the private subroutine, ChangeStringToDateInDateCo
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub SetUpTitlesForSummaryDataPrivateSubRoutine()
+Private Sub _
+    SetUpTitlesForSummaryDataPrivateSubRoutine()
 
-
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_TITLE, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value _
-            = "Ticker"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_TITLE, _
+                    ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                        .Value _
+    = "Ticker"
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_TITLE, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE).Value _
-            = "Yearly Change"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_TITLE, _
+                    ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE) _
+                        .Value _
+    = "Yearly Change"
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_TITLE, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value _
-            = "Percent Change"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_TITLE, _
+                    ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                        .Value _
+    = "Percent Change"
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_TITLE, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME).Value _
-            = "Total Stock Volume"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_TITLE, _
+                    ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                        .Value _
+    = "Total Stock Volume"
     
-
-End Sub  ' This statement ends the public subroutine, SetUpTitlesForSummaryDataPrivateSubRoutine.
-
+End Sub  ' This statement ends the public subroutine,
+' SetUpTitlesForSummaryDataPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -451,71 +525,84 @@ End Sub  ' This statement ends the public subroutine, SetUpTitlesForSummaryDataP
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub FormatSummaryDataPrivateSubRoutine()
-
+Private Sub _
+    FormatSummaryDataPrivateSubRoutine()
 
     ' These lines of code set the formats for the various columns.
      
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER _
-        ).NumberFormat _
-            = "General"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                    .NumberFormat _
+    = "General"
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE _
-        ).NumberFormat _
-            = "#,##0.00"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE) _
+                    .NumberFormat _
+    = "#,##0.00"
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE _
-        ).NumberFormat _
-            = "0.00%"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                    .NumberFormat _
+    = "0.00%"
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME _
-        ).NumberFormat _
-            = "#,##0"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                    .NumberFormat _
+    = "#,##0"
     
         
     ' These lines of code set the column widths for the various columns.
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER _
-        ).ColumnWidth _
-            = 10
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                    .ColumnWidth _
+    = 10
     
     
     For indexLocalCounterVariable _
             = ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE _
                     To ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE
 
-        Worksheets(ActiveSheet.Name).Columns( _
-            indexLocalCounterVariable _
-            ).ColumnWidth _
-                = 16
+        Worksheets _
+            (ActiveSheet.Name) _
+                .Columns _
+                    (indexLocalCounterVariable) _
+                        .ColumnWidth _
+        = 16
             
-    Next indexLocalCounterVariable ' This statement ends the for repetition loop.
+    Next indexLocalCounterVariable ' This statement ends the repetition loop.
     
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME _
-        ).ColumnWidth _
-            = 25
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                    .ColumnWidth _
+    = 25
 
-    
-End Sub ' This statement ends the private subroutine, FormatSummaryDataPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' FormatSummaryDataPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -524,43 +611,49 @@ End Sub ' This statement ends the private subroutine, FormatSummaryDataPrivateSu
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '       This subroutine sets the format for the row containing titles for both 
+ '       This subroutine sets the format for the row containing titles for both
  '       the original data and the summarized data.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub FormatTitlesPrivateSubRoutine()
+Private Sub _
+    FormatTitlesPrivateSubRoutine()
 
-
-    Worksheets(ActiveSheet.Name).Rows( _
-        RowGlobalEnumeration.ENUM_K_TITLE _
-        ).NumberFormat _
-            = "General"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Rows _
+                (RowGlobalEnumeration.ENUM_K_TITLE) _
+                    .NumberFormat _
+    = "General"
     
-    Worksheets(ActiveSheet.Name).Rows( _
-        RowGlobalEnumeration.ENUM_K_TITLE _
-        ).Font.Bold _
-            = True
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Rows _
+                (RowGlobalEnumeration.ENUM_K_TITLE) _
+                    .Font _
+                        .Bold _
+    = True
     
-    Worksheets(ActiveSheet.Name).Rows( _
-        RowGlobalEnumeration.ENUM_K_TITLE _
-        ).HorizontalAlignment _
-            = xlCenter
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Rows _
+                (RowGlobalEnumeration.ENUM_K_TITLE) _
+                    .HorizontalAlignment _
+    = xlCenter
 
-
-End Sub ' This statement ends the private subroutine, FormatTitlesPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' FormatTitlesPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -573,42 +666,54 @@ End Sub ' This statement ends the private subroutine, FormatTitlesPrivateSubRout
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a              n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub CreateSummaryTablePrivateSubRoutine()
-    
+Private Sub _
+    CreateSummaryTablePrivateSubRoutine()
     
     ' This lines of code declare variables for the original data's first row index
-    ' for the repetition loop.
+    ' in the repetition loop.
     
-    Dim firstRowLocalLongVariable As Long
+    Dim _
+        firstRowLocalLongVariable _
+            As Long
     
 
-    ' These lines of code declare variables for the original data record. 
+    ' These lines of code declare variables for the original data record.
     ' The program uses these values to calculate the summary table record.
     
-    Dim currentTickerNameLocalStringVariable As String
+    Dim _
+        currentTickerNameLocalStringVariable _
+            As String
     
-    Dim openingPriceLocalCurrencyVariable As Currency
+    Dim _
+        openingPriceLocalCurrencyVariable _
+            As Currency
     
-    Dim closingPriceLocalCurrencyVariable As Currency
+    Dim _
+        closingPriceLocalCurrencyVariable _
+            As Currency
     
-    Dim totalStockVolumeLocalVariantVariable As Variant
+    Dim _
+        totalStockVolumeLocalVariantVariable _
+            As Variant
     
     
-    ' This line of code declares the variable for the row index for a summary 
-    ' table index.
+    ' This line of code declares the variable for the row index
+    ' in the summary table.
     
-    Dim summaryTableRowLocalLongVariable As Long
+    Dim _
+        summaryTableRowLocalLongVariable _
+            As Long
     
     
     ' This subroutine places the titles in the appropriate cells.
@@ -616,26 +721,35 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
     SetUpTitlesForSummaryDataPrivateSubRoutine
     
     
-    ' These lines of code initialize variables with information from the first
-    ' row of the original data.
+    ' These lines of code initialize variables with information from the first row
+    ' of the original data.
     
     currentTickerNameLocalStringVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-                RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).Value
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                            .Value
     
     openingPriceLocalCurrencyVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-                RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN).Value
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN) _
+                            .Value
                 
     totalStockVolumeLocalVariantVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-                RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL) _
+                            .Value
                 
     
-    ' These lines of code set the initial row indices for the original data 
+    ' These lines of code set the initial row indices for the original data
     ' and summary tables.
     
     firstRowLocalLongVariable _
@@ -645,40 +759,48 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
         = RowGlobalEnumeration.ENUM_K_FIRST_DATA
  
  
-    ' This repetition loop runs through all the rows of the original data and
-    ' generates the summary table.  The loop starts with the second row of 
-    ' original data.
+    ' This repetition loop runs through all the rows of the original data
+    ' and generates the summary table: the loop starts with the second
+    ' row of original data.
 
-    For originalRowCounterVariable = firstRowLocalLongVariable To lastDataRowGlobalLongVariable
+    For originalRowCounterVariable _
+                = firstRowLocalLongVariable _
+                        To lastDataRowGlobalLongVariable
     
-        If Worksheets(ActiveSheet.Name).Cells( _
-                originalRowCounterVariable, _
-                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).Value _
-                    = currentTickerNameLocalStringVariable Then
+        If Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (originalRowCounterVariable, _
+                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                                .Value _
+            = currentTickerNameLocalStringVariable Then
         
         
-            ' If the ticker name is the same, this line of code adds the current
-            ' stock volume to the total.
+            ' If the ticker name is the same, this line of code adds the current stock volume
+            ' to the total.
                                     
             totalStockVolumeLocalVariantVariable _
-                = totalStockVolumeLocalVariantVariable + _
-                        Worksheets(ActiveSheet.Name).Cells( _
-                            originalRowCounterVariable, _
-                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
+                = totalStockVolumeLocalVariantVariable _
+                        + Worksheets _
+                                (ActiveSheet.Name) _
+                                    .Cells _
+                                        (originalRowCounterVariable, _
+                                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL) _
+                                                .Value
                             
                             
-            ' If the loop has reached the last row the program creates a summary 
-            ' table record.
+            ' If the loop has reached the last row the program creates a summary table record.
         
-            If originalRowCounterVariable = lastDataRowGlobalLongVariable Then
+            If originalRowCounterVariable _
+                    = lastDataRowGlobalLongVariable Then
                                            
                CreateSummaryTableRowPrivateSubRoutine _
-                    currentTickerNameLocalStringVariable, _
-                    openingPriceLocalCurrencyVariable, _
-                    totalStockVolumeLocalVariantVariable, _
-                    summaryTableRowLocalLongVariable, _
-                    originalRowCounterVariable, _
-                    True
+                        currentTickerNameLocalStringVariable, _
+                        openingPriceLocalCurrencyVariable, _
+                        totalStockVolumeLocalVariantVariable, _
+                        summaryTableRowLocalLongVariable, _
+                        originalRowCounterVariable, _
+                        True
                     
             End If
             
@@ -686,86 +808,103 @@ Private Sub CreateSummaryTablePrivateSubRoutine()
         
             ' This if statement executes if the loop has not reached the end of the data.
         
-            If originalRowCounterVariable <> lastDataRowGlobalLongVariable Then
+            If originalRowCounterVariable _
+                    <> lastDataRowGlobalLongVariable Then
             
-                ' If the current ticker does not match the previous ticker, the program 
-                ' creates a record.
+                ' If the current ticker does not match the previous ticker,
+                ' the program creates a record.
             
                 CreateSummaryTableRowPrivateSubRoutine _
-                    currentTickerNameLocalStringVariable, _
-                    openingPriceLocalCurrencyVariable, _
-                    totalStockVolumeLocalVariantVariable, _
-                    summaryTableRowLocalLongVariable, _
-                    originalRowCounterVariable, _
-                    False
-                
+                        currentTickerNameLocalStringVariable, _
+                        openingPriceLocalCurrencyVariable, _
+                        totalStockVolumeLocalVariantVariable, _
+                        summaryTableRowLocalLongVariable, _
+                        originalRowCounterVariable, _
+                        False
+                    
                 
                 ' These lines of code assign new values to the original data variables.
                 
                 currentTickerNameLocalStringVariable _
-                    = Worksheets(ActiveSheet.Name).Cells( _
-                            originalRowCounterVariable, _
-                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).Value
+                    = Worksheets _
+                            (ActiveSheet.Name) _
+                                .Cells _
+                                    (originalRowCounterVariable, _
+                                        ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                                            .Value
                 
                 openingPriceLocalCurrencyVariable _
-                    = Worksheets(ActiveSheet.Name).Cells( _
-                            originalRowCounterVariable, _
-                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN).Value
+                    = Worksheets _
+                            (ActiveSheet.Name) _
+                                .Cells _
+                                    (originalRowCounterVariable, _
+                                     ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN) _
+                                        .Value
                 
                 totalStockVolumeLocalVariantVariable _
-                    = Worksheets(ActiveSheet.Name).Cells( _
-                            originalRowCounterVariable, _
-                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
+                    = Worksheets _
+                            (ActiveSheet.Name) _
+                                .Cells _
+                                    (originalRowCounterVariable, _
+                                     ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL) _
+                                        .Value
             
                 
-               ' This line of code increases the summary table row index by one for
-               ' the next record.
+               ' This line of code increases the summary table row index
+               ' by one for the next record.
             
                 summaryTableRowLocalLongVariable _
                     = summaryTableRowLocalLongVariable + 1
                         
             Else
             
-                ' These lines of code initialize variables with information from the 
-                ' last row of the original data.
+                ' These lines of code initialize variables with information
+                ' from the last row of the original data.
     
                 currentTickerNameLocalStringVariable _
-                    = Worksheets(ActiveSheet.Name).Cells( _
-                            originalRowCounterVariable, _
-                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER).Value
+                    = Worksheets _
+                            (ActiveSheet.Name) _
+                                .Cells _
+                                    (originalRowCounterVariable, _
+                                     ColumnGlobalEnumeration.ENUM_K_ORIGINAL_TICKER) _
+                                        .Value
                     
                 openingPriceLocalCurrencyVariable _
-                    = Worksheets(ActiveSheet.Name).Cells( _
-                            originalRowCounterVariable, _
-                            ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN).Value
+                    = Worksheets _
+                            (ActiveSheet.Name) _
+                                .Cells _
+                                    (originalRowCounterVariable, _
+                                     ColumnGlobalEnumeration.ENUM_K_ORIGINAL_OPEN) _
+                                        .Value
                             
                 totalStockVolumeLocalVariantVariable _
-                    = totalStockVolumeLocalVariantVariable + _
-                            Worksheets(ActiveSheet.Name).Cells( _
-                                originalRowCounterVariable, _
-                                ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL).Value
+                    = totalStockVolumeLocalVariantVariable _
+                        + Worksheets _
+                                (ActiveSheet.Name) _
+                                    .Cells _
+                                        (originalRowCounterVariable, _
+                                         ColumnGlobalEnumeration.ENUM_K_ORIGINAL_VOL) _
+                                            .Value
                                 
                                 
-                ' The program then creates a record with theis information.
+                ' The program then creates a record with this information.
                                 
                 CreateSummaryTableRowPrivateSubRoutine _
-                    currentTickerNameLocalStringVariable, _
-                    openingPriceLocalCurrencyVariable, _
-                    totalStockVolumeLocalVariantVariable, _
-                    summaryTableRowLocalLongVariable, _
-                    originalRowCounterVariable, _
-                    True
+                        currentTickerNameLocalStringVariable, _
+                        openingPriceLocalCurrencyVariable, _
+                        totalStockVolumeLocalVariantVariable, _
+                        summaryTableRowLocalLongVariable, _
+                        originalRowCounterVariable, _
+                        True
             
             End If
             
         End If
         
-        
-    Next originalRowCounterVariable ' This statement ends the for repetition loop.
+    Next originalRowCounterVariable ' This statement ends the repetition loop.
     
-
-End Sub ' This statement ends the private subroutine, CreateSummaryTablePrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' CreateSummaryTablePrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -775,38 +914,40 @@ End Sub ' This statement ends the private subroutine, CreateSummaryTablePrivateS
  '
  '  Function Description:
  '      This function calculates the yearly change between the first opening price
- '      and last closing price of a ticker.
+ '      and the last closing price of a ticker.
  '
  '  Function Parameters:
  '
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal   openingPriceParameterDoubleVariable
- '                                          This parameter holds the first opening price 
- '                                          of a ticker.
+ '                                          This parameter holds the first opening price of a ticker.
  '  ByVal   closingPriceParameterDoubleVariable
- '                                          This parameter holds the last closing price 
- '                                          of a ticker.
+ '                                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Function CalculateYearlyChangePrivateFunction( _
-    ByVal openingPriceParameterDoubleVariable, _
-    ByVal closingPriceParameterDoubleVariable) _
-        As Double
-    
+Private Function _
+    CalculateYearlyChangePrivateFunction _
+        (ByVal _
+            openingPriceParameterDoubleVariable _
+                As Double, _
+        ByVal _
+            closingPriceParameterDoubleVariable _
+                As Double) _
+As Double
     
     CalculateYearlyChangePrivateFunction _
-        = closingPriceParameterDoubleVariable - openingPriceParameterDoubleVariable
-
-
-End Function ' This statement ends the private function, CalculateYearlyChangePrivateFunction.
-
+        = closingPriceParameterDoubleVariable _
+            - openingPriceParameterDoubleVariable
+            
+End Function ' This statement ends the private function,
+' CalculateYearlyChangePrivateFunction.
 
 '*******************************************************************************************
  '
@@ -823,45 +964,56 @@ End Function ' This statement ends the private function, CalculateYearlyChangePr
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal   rowIndexParameterIntegerVariable
- '                                          This parameter holds the row index for the 
- '                                          current record in the summary table.
+ '                                          This parameter holds the row index for the current record
+ '                                          in the summary table.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
- '
+ '  07/19/2023            Initial Development                                         N. James George
  '******************************************************************************************/
 
-Private Sub FormatYearlyChangeCellPrivateSubRoutine( _
-    ByVal rowIndexParameterIntegerVariable _
-    As Integer)
+Private Sub _
+    FormatYearlyChangeCellPrivateSubRoutine _
+        (ByVal _
+            rowIndexParameterIntegerVariable _
+                As Integer)
     
-    
-    ' If the yearly change is zero or positive, the program changes the background color to green.
+    ' If the yearly change is zero or positive, the program changes the background color
+    ' to green.
 
-    If Worksheets(ActiveSheet.Name).Cells( _
-            rowIndexParameterIntegerVariable, _
-            ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE).Value _
-        >= 0 Then
+    If Worksheets _
+            (ActiveSheet.Name) _
+                .Cells _
+                    (rowIndexParameterIntegerVariable, _
+                     ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE) _
+                        .Value _
+       >= 0 Then
         
-        Worksheets(ActiveSheet.Name).Cells( _
-            rowIndexParameterIntegerVariable, _
-            ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE).Interior.ColorIndex _
-                = 4
+        Worksheets _
+            (ActiveSheet.Name) _
+                .Cells _
+                    (rowIndexParameterIntegerVariable, _
+                     ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE) _
+                        .Interior _
+                            .ColorIndex _
+        = 4
         
     Else ' If the yearly change is negative, the program changes the background color to red.
     
-        Worksheets(ActiveSheet.Name).Cells( _
-            rowIndexParameterIntegerVariable, _
-            ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE).Interior.ColorIndex _
-                = 3
+        Worksheets _
+            (ActiveSheet.Name) _
+                .Cells _
+                    (rowIndexParameterIntegerVariable, _
+                     ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE) _
+                        .Interior _
+                            .ColorIndex _
+        = 3
     
     End If
     
-
-End Sub ' This statement ends the private subroutine, FormatYearlyChangeCellPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' FormatYearlyChangeCellPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -871,38 +1023,40 @@ End Sub ' This statement ends the private subroutine, FormatYearlyChangeCellPriv
  '
  '  Function Description:
  '      This function calculates the percent change between the first opening price
- '      and last closing price of a ticker.
+ '      and the last closing price of a ticker.
  '
  '  Function Parameters:
  '
  '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal   openingPriceParameterDoubleVariable
- '                                          This parameter holds the first opening price 
- '                                          of a ticker.
+ '                                          This parameter holds the first opening price of a ticker.
  '  ByVal   closingPriceParameterDoubleVariable
- '                                          This parameter holds the last closing price 
- '                                          of a ticker.
+ '                                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Function CalculatePercentChangePrivateFunction( _
-    ByVal openingPriceParameterDoubleVariable, _
-    ByVal closingPriceParameterDoubleVariable) _
-        As Double
-
+Private Function _
+    CalculatePercentChangePrivateFunction( _
+        ByVal _
+            openingPriceParameterDoubleVariable _
+                As Double, _
+        ByVal _
+            closingPriceParameterDoubleVariable _
+                As Double) _
+As Double
 
     CalculatePercentChangePrivateFunction _
-         = (closingPriceParameterDoubleVariable - openingPriceParameterDoubleVariable) / openingPriceParameterDoubleVariable
+        = (closingPriceParameterDoubleVariable - openingPriceParameterDoubleVariable) _
+            / openingPriceParameterDoubleVariable
 
-
-End Function ' This statement ends the private function, CalculatePercentChangePrivateFunction.
-
+End Function ' This statement ends the private function,
+' CalculatePercentChangePrivateFunction.
 
 '*******************************************************************************************
  '
@@ -915,97 +1069,136 @@ End Function ' This statement ends the private function, CalculatePercentChangeP
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal   tickerNameParameterStringVariable
- '                          This parameter holds the name of the stock ticker.
- '  ByVal   openingPriceParameterCurrencyVariable
- '                          This parameter holds the first opening price for this 
- '                          stock ticker.
- '  ByVal   totalStockVolumeParameterVariantVariable
- '                          This parameter holds the total stock volume for this
- '                          stock ticker.
- '  ByVal   summaryRowParameterLongVariable
- '                          This parameter holds the current summary table row index.
- '  ByVal   originalRowParameterLongVariable
- '                          This parameter holds the current original data row index.
- '  ByVal   lastRowFlagParameterBooleanVariable
- '                          This parameter indeicates whether the program has reached
- '                          the last record or not.
+ '  ByVal    tickerNameParameterStringVariable
+ '                                          This parameter holds the name of the stock ticker.
+ '  ByVal    openingPriceParameterCurrencyVariable
+ '                                          This parameter is the first opening price for this
+ '                                          stock ticker.
+ '  ByVal    totalStockVolumeParameterVariantVariable
+ '                                          This parameter is the total stock volume for this
+ '                                          stock ticker.
+ '  ByVal    summaryRowParameterLongVariable
+ '                                          This parameter is the current summary table row index.
+ '  ByVal    originalRowParameterLongVariable
+ '                                          This parameter is the current original data row index.
+ '  ByVal    lastRowFlagParameterBooleanVariable
+ '                                          This parameter indicates whether the program
+ '                                          has reached the last record or not.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      Nicholas George (NJG)
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub CreateSummaryTableRowPrivateSubRoutine( _
-    ByVal tickerNameParameterStringVariable As String, _
-    ByVal openingPriceParameterCurrencyVariable As Currency, _
-    ByVal totalStockVolumeParameterVariantVariable As Variant, _
-    ByVal summaryRowParameterLongVariable As Long, _
-    ByVal originalRowParameterLongVariable As Long, _
-    ByVal lastRowFlagParameterBooleanVariable As Boolean)
-
+Private Sub _
+    CreateSummaryTableRowPrivateSubRoutine _
+        (ByVal _
+            tickerNameParameterStringVariable _
+                As String, _
+         ByVal _
+            openingPriceParameterCurrencyVariable _
+                As Currency, _
+         ByVal _
+            totalStockVolumeParameterVariantVariable _
+                As Variant, _
+         ByVal _
+            summaryRowParameterLongVariable _
+                As Long, _
+         ByVal _
+            originalRowParameterLongVariable _
+                As Long, _
+        ByVal _
+            lastRowFlagParameterBooleanVariable _
+                As Boolean)
 
     ' This line of code declares a variable for the closing price which is different
-    ' based on whether the program has reached the last row or not in the original data
+    ' based on whether the program has reached the last row or not in the
+    ' original data
     
-    Dim closingPriceLocalCurrencyVariable As Currency
+    Dim _
+        closingPriceLocalCurrencyVariable _
+            As Currency
 
 
-    ' If the program has not reached the last row the closing price comes from the previous 
-    ' row in the original data; otherwise, the closing price comes from the current row.
+    ' If the program has not reached the last row, the closing price comes
+    ' from the previous row in the original data; otherwise, the closing
+    ' price comes from the current row.
                   
-    If lastRowFlagParameterBooleanVariable = False Then
+    If lastRowFlagParameterBooleanVariable _
+       = False Then
             
         closingPriceLocalCurrencyVariable _
-            = Worksheets(ActiveSheet.Name).Cells( _
-                    originalRowParameterLongVariable - 1, _
-                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_CLOSE).Value
+            = Worksheets _
+                    (ActiveSheet.Name) _
+                        .Cells _
+                            (originalRowParameterLongVariable - 1, _
+                             ColumnGlobalEnumeration.ENUM_K_ORIGINAL_CLOSE) _
+                                .Value
             
     Else
             
         closingPriceLocalCurrencyVariable _
-            = Worksheets(ActiveSheet.Name).Cells( _
-                    originalRowParameterLongVariable, _
-                    ColumnGlobalEnumeration.ENUM_K_ORIGINAL_CLOSE).Value
+            = Worksheets _
+                    (ActiveSheet.Name) _
+                        .Cells _
+                            (originalRowParameterLongVariable, _
+                             ColumnGlobalEnumeration.ENUM_K_ORIGINAL_CLOSE) _
+                                .Value
             
     End If
             
             
     ' These lines of code create a record in the summary table.
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        summaryRowParameterLongVariable, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value _
-            = tickerNameParameterStringVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (summaryRowParameterLongVariable, _
+                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                    .Value _
+    = tickerNameParameterStringVariable
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        summaryRowParameterLongVariable, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE).Value _
-            = CalculateYearlyChangePrivateFunction( _
-                    CDbl(openingPriceParameterCurrencyVariable), _
-                    CDbl(closingPriceLocalCurrencyVariable))
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (summaryRowParameterLongVariable, _
+                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_YEARLY_CHANGE) _
+                    .Value _
+    = CalculateYearlyChangePrivateFunction _
+            (CDbl _
+                (openingPriceParameterCurrencyVariable), _
+            CDbl _
+                (closingPriceLocalCurrencyVariable))
                             
-    FormatYearlyChangeCellPrivateSubRoutine (summaryRowParameterLongVariable)
+    FormatYearlyChangeCellPrivateSubRoutine _
+        summaryRowParameterLongVariable
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        summaryRowParameterLongVariable, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value _
-            = CalculatePercentChangePrivateFunction( _
-                    CDbl(openingPriceParameterCurrencyVariable), _
-                    CDbl(closingPriceLocalCurrencyVariable))
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (summaryRowParameterLongVariable, _
+                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                    .Value _
+    = CalculatePercentChangePrivateFunction _
+            (CDbl _
+                (openingPriceParameterCurrencyVariable), _
+             CDbl _
+                (closingPriceLocalCurrencyVariable))
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        summaryRowParameterLongVariable, _
-        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME).Value _
-            = totalStockVolumeParameterVariantVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (summaryRowParameterLongVariable, _
+                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                    .Value _
+    = totalStockVolumeParameterVariantVariable
 
-
-End Sub ' This statement ends the private subroutine, CreateSummaryTableRowPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' CreateSummaryTableRowPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -1014,24 +1207,23 @@ End Sub ' This statement ends the private subroutine, CreateSummaryTableRowPriva
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '      This subroutine creates a table that lists the tickers with the greatest percent 
- '      change and the ticker with the greatest total stock volume.
+ '      This subroutine creates a table that lists the tickers with the greatest percent change
+ '      and the ticker with the greatest total stock volume.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      Nicholas George (NJG)
- '
+ '  07/20/2023            Initial Development                                         N. James George
  '******************************************************************************************/
 
-Public Sub CreateChangeTablePrivateSubRoutine()
-
+Public Sub _
+    CreateChangeTablePrivateSubRoutine()
 
     FormatChangeTablePrivateSubRoutine
     
@@ -1039,9 +1231,8 @@ Public Sub CreateChangeTablePrivateSubRoutine()
     
     CalculateAndWriteChangeTableDataPrivateSubRoutine
 
-
-End Sub ' This statement ends the private subroutine, CreateChangeTablePrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' CreateChangeTablePrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -1050,78 +1241,101 @@ End Sub ' This statement ends the private subroutine, CreateChangeTablePrivateSu
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '      This subroutine formats the row and column titles for the change table.
+ '      This subroutine formats the row and column titles in the change table.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      Nicholas George (NJG)
+ '  07/20/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub FormatChangeTablePrivateSubRoutine()
-
+Private Sub _
+    FormatChangeTablePrivateSubRoutine()
 
     ' These lines of code format the columns and cells of the change table.
 
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES _
-        ).NumberFormat _
-            = "General"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES) _
+                    .NumberFormat _
+    = "General"
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS _
-        ).NumberFormat _
-            = "General"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS) _
+                    .NumberFormat _
+    = "General"
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).NumberFormat _
-            = "0.00%"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .NumberFormat _
+    = "0.00%"
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).NumberFormat _
-            = "0.00%"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .NumberFormat _
+    = "0.00%"
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).NumberFormat _
-            = "#,##0"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .NumberFormat _
+    = "#,##0"
             
            
-     ' These lines of code set the column widths for the change table.
+    ' These lines of code set the column widths for the change table.
            
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES).ColumnWidth _
-            = 25
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES) _
+                    .ColumnWidth _
+    = 25
             
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS).ColumnWidth _
-            = 10
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS) _
+                    .ColumnWidth _
+    = 10
             
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).ColumnWidth _
-            = 25
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .ColumnWidth _
+    = 25
             
             
     ' This line of code sets the font style for the row titles to bold.
     
-    Worksheets(ActiveSheet.Name).Columns( _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES _
-        ).Font.Bold _
-            = True
-    
-            
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Columns _
+                (ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES) _
+                    .Font _
+                        .Bold _
+    = True
 
-End Sub ' This statement ends the private subroutine, FormatChangeTableTitlesPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' FormatChangeTableTitlesPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -1130,58 +1344,71 @@ End Sub ' This statement ends the private subroutine, FormatChangeTableTitlesPri
  '  Subroutine Type: Private
  '
  '  Subroutine Description:
- '      This subroutine writes the column and row titles tot he appropriate cells
+ '      This subroutine writes the column and row titles to the appropriate cells
  '      in the change table.
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      Nicholas George (NJG)
+ '  07/20/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub SetupChangeTableTitlesPrivateSubRoutine()
-
+Private Sub _
+    SetupChangeTableTitlesPrivateSubRoutine()
 
     ' These lines of code set the column titles in the change table.
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_TITLE, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS).Value _
-            = "Ticker"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_TITLE, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS) _
+                    .Value _
+    = "Ticker"
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_TITLE, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).Value _
-            = "Value"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_TITLE, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .Value _
+    = "Value"
             
             
     ' These lines of code set the row titles in the change table,
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES).Value _
-            = "Greatest % Increase"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES) _
+                    .Value _
+    = "Greatest % Increase"
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES).Value _
-            = "Greatest % Decrease"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES).Value _
+    = "Greatest % Decrease"
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES).Value _
-            = "Greatest Total Volume"
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_ROW_TITLES) _
+                    .Value _
+    = "Greatest Total Volume"
 
-
-End Sub ' This statement ends the private subroutine, SetupChangeTableTitlesPrivateSubRoutine.
-
+End Sub ' This statement ends the private subroutine,
+' SetupChangeTableTitlesPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -1195,53 +1422,72 @@ End Sub ' This statement ends the private subroutine, SetupChangeTableTitlesPriv
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type    Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      Nicholas George (NJG)
+ '  07/20/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub CalculateAndWriteChangeTableDataPrivateSubRoutine()
-
+Private Sub _
+    CalculateAndWriteChangeTableDataPrivateSubRoutine()
 
     ' These lines of code declare variables for the various tickers.
     
-    Dim increaseTickerLocalStringVariable As String
+    Dim _
+        increaseTickerLocalStringVariable _
+            As String
     
-    Dim decreaseTickerLocalStringVariable As String
+    Dim _
+        decreaseTickerLocalStringVariable _
+            As String
     
-    Dim volumeTickerLocalStringVariable As String
+    Dim _
+        volumeTickerLocalStringVariable _
+            As String
     
     
     ' These lines of code declare variables for the associated values.
     
-    Dim increasePercentageLocalDoubleVariable As Double
+    Dim _
+        increasePercentageLocalDoubleVariable _
+            As Double
     
-    Dim decreasePercentageLocalDoubleVariable As Double
+    Dim _
+        decreasePercentageLocalDoubleVariable _
+            As Double
     
-    Dim volumeLocalVariantVariable As Variant
+    Dim _
+        volumeLocalVariantVariable _
+            As Variant
     
     
     ' These lines of code declare variables for the first and last index
     ' in the repetition loop.
     
-    Dim firstRowLocalLongVariable As Long
+    Dim _
+        firstRowLocalLongVariable _
+            As Long
     
-    Dim lastRowLocalLongVariable As Long
+    Dim _
+        lastRowLocalLongVariable _
+            As Long
     
     
-    ' These lines of code initialize the variables with data from the first record
-    ' in the summary table.
+    ' These lines of code initialize the variables with data from the first
+    ' record in the summary table.
     
     increaseTickerLocalStringVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-             RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-             ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                            .Value
          
     decreaseTickerLocalStringVariable _
         = increaseTickerLocalStringVariable
@@ -1251,17 +1497,23 @@ Private Sub CalculateAndWriteChangeTableDataPrivateSubRoutine()
         
        
     increasePercentageLocalDoubleVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-             RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-             ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                            .Value
              
     decreaseTickerLocalStringVariable _
         = increasePercentageLocalDoubleVariable
         
     volumeLocalVariantVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-             RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-             ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME).Value
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                            .Value
     
     
     ' These lines of code initialize the first and last index of the repetition loop.
@@ -1270,117 +1522,165 @@ Private Sub CalculateAndWriteChangeTableDataPrivateSubRoutine()
         = RowGlobalEnumeration.ENUM_K_FIRST_DATA + 1
         
     lastRowLocalLongVariable _
-        = Worksheets(ActiveSheet.Name).Cells( _
-                Rows.Count, _
-                ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).End(xlUp).Row
+        = Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (Rows.Count, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                                .End _
+                                    (xlUp) _
+                                        .Row
         
         
-    ' This for repetition loop starts at the second record of the summary table and, _
-    ' through comparisons, finds the tickers with the greatest increase, greatest decrease,
-    ' and greatest total stock volume.
+    ' This repetition loop starts at the second record of the summary table and,
+    ' through comparisons, finds the tickers with the greatest increase, greatest
+    ' decrease, and greatest total stock volume.
          
-    For rowIndexLocalCounterVariable = firstRowLocalLongVariable To lastRowLocalLongVariable
+    For rowIndexLocalCounterVariable _
+            = firstRowLocalLongVariable _
+                    To lastRowLocalLongVariable
     
+        ' If a record has a larger change in percentage than the previous holder,
+        ' set it as the new leader in percentage increase.
     
-        ' If a record has a larger change in percentagethan the previous holder, set it as the new leader
-        ' in percentage increase.
-    
-        If Worksheets(ActiveSheet.Name).Cells( _
-                rowIndexLocalCounterVariable, _
-                ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value _
-                    > increasePercentageLocalDoubleVariable Then
+        If Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (rowIndexLocalCounterVariable, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                            .Value _
+           > increasePercentageLocalDoubleVariable Then
         
             increaseTickerLocalStringVariable _
-                = Worksheets(ActiveSheet.Name).Cells( _
-                        rowIndexLocalCounterVariable, _
-                        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value
+                = Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowIndexLocalCounterVariable, _
+                                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                                    .Value
                         
             increasePercentageLocalDoubleVariable _
-                = Worksheets(ActiveSheet.Name).Cells( _
-                        rowIndexLocalCounterVariable, _
-                        ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value
+                = Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowIndexLocalCounterVariable, _
+                                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                                    .Value
         
         End If
         
         
-        ' If a record has a smaller change in percentage than the previous holder, set it as the new leader
-        ' in percentage decrease.
+        ' If a record has a smaller change in percentage than the previous holder,
+        ' set it as the new leader in percentage decrease.
         
-        If Worksheets(ActiveSheet.Name).Cells( _
-                rowIndexLocalCounterVariable, _
-                ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value _
-                    < decreasePercentageLocalDoubleVariable Then
+        If Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (rowIndexLocalCounterVariable, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                            .Value _
+           < decreasePercentageLocalDoubleVariable Then
         
             decreaseTickerLocalStringVariable _
-                = Worksheets(ActiveSheet.Name).Cells( _
-                        rowIndexLocalCounterVariable, _
-                        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value
+                = Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowIndexLocalCounterVariable, _
+                                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                                    .Value
                         
             decreasePercentageLocalDoubleVariable _
-                = Worksheets(ActiveSheet.Name).Cells( _
-                        rowIndexLocalCounterVariable, _
-                        ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE).Value
+                = Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                    (rowIndexLocalCounterVariable, _
+                                     ColumnGlobalEnumeration.ENUM_K_SUMMARY_PERCENT_CHANGE) _
+                                        .Value
         
         End If
         
         
-        ' If a record has a larger total stock volume than the previous holder, set it as the
-        ' new leader in total stock volume.
+        ' If a record has a larger total stock volume than the previous holder,
+        ' set it as the new leader in total stock volume.
         
-        If Worksheets(ActiveSheet.Name).Cells( _
-                rowIndexLocalCounterVariable, _
-                ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME).Value _
-                    > volumeLocalVariantVariable Then
+        If Worksheets _
+                (ActiveSheet.Name) _
+                    .Cells _
+                        (rowIndexLocalCounterVariable, _
+                         ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                            .Value _
+           > volumeLocalVariantVariable Then
         
             volumeTickerLocalStringVariable _
-                = Worksheets(ActiveSheet.Name).Cells( _
-                        rowIndexLocalCounterVariable, _
-                        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER).Value
+                = Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowIndexLocalCounterVariable, _
+                                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_TICKER) _
+                                    .Value
                         
             volumeLocalVariantVariable _
-                = Worksheets(ActiveSheet.Name).Cells( _
-                        rowIndexLocalCounterVariable, _
-                        ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME).Value
+                = Worksheets _
+                        (ActiveSheet.Name) _
+                            .Cells _
+                                (rowIndexLocalCounterVariable, _
+                                 ColumnGlobalEnumeration.ENUM_K_SUMMARY_TOTAL_STOCK_VOLUME) _
+                                    .Value
         
         End If
     
-    
-    Next rowIndexLocalCounterVariable ' This statement ends the for repetition loop.
+    Next rowIndexLocalCounterVariable ' This statement ends the repetition loop.
              
     
     ' These lines of code write the results to the change table.
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS).Value _
-            = increaseTickerLocalStringVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS) _
+                    .Value _
+    = increaseTickerLocalStringVariable
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).Value _
-            = increasePercentageLocalDoubleVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_FIRST_DATA, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .Value _
+    = increasePercentageLocalDoubleVariable
             
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS).Value _
-            = decreaseTickerLocalStringVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS) _
+                    .Value _
+    = decreaseTickerLocalStringVariable
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).Value _
-            = decreasePercentageLocalDoubleVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_PERCENT_DECREASE, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).Value _
+    = decreasePercentageLocalDoubleVariable
 
             
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS).Value _
-            = volumeTickerLocalStringVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_TICKERS).Value _
+    = volumeTickerLocalStringVariable
     
-    Worksheets(ActiveSheet.Name).Cells( _
-        RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
-        ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES).Value _
-            = volumeLocalVariantVariable
+    Worksheets _
+        (ActiveSheet.Name) _
+            .Cells _
+                (RowGlobalEnumeration.ENUM_K_GREATEST_TOTAL_VOLUME, _
+                 ColumnGlobalEnumeration.ENUM_K_CHANGE_VALUES) _
+                    .Value _
+    = volumeLocalVariantVariable
     
-
-End Sub ' This statement ends the private subroutine, CalculateChangeTableDataPrivateSubRoutine.
+End Sub ' This statement ends the private subroutine,
+' CalculateChangeTableDataPrivateSubRoutine.
