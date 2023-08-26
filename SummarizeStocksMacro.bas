@@ -75,12 +75,12 @@ End Enum
 Global Const _
     GLOBAL_CONSTANT_YEAR_LENGTH _
         As Integer _
- = 4
+= 4
 
 Global Const _
     GLOBAL_CONSTANT_MONTH_OR_DAY_LENGTH _
         As Integer _
- = 2
+= 2
 
 
 ' This global variable holds the value of the number of rows in the original data.
