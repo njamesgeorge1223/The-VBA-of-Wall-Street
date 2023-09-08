@@ -2,7 +2,7 @@
 
 ----
 
-# Equities Analysis Challenge
+# Stock Analysis in VBA
 
 ----
 
