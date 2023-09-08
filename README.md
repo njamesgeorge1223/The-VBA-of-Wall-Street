@@ -14,3 +14,4 @@ For this project, I write a VBA script that formats, summarizes, and analyzes 2.
 
 <img width="1364" alt="Equities_Analysis_in_VBA_2020" src="https://github.com/njgeorge000158/Stock-Analysis-in-VBA/assets/137228821/60327d8c-927b-4f0b-9c8c-fbc9ff90b566">
 
+The only discernable pattern for this analysis is that RKS had the greatest decrease for the years 2018 and 2019 with -90.02% and -91.60, respectively.  Moreover, RKS is close to having the greatest decrease in 2020 with -88.65% but is defeated by VNG with its decrease, -89.05%
