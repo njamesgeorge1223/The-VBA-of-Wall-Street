@@ -28,9 +28,9 @@ Attribute VB_Name = "Module1"
  '      CalculatePercentChangePrivateFunction
  '
  '
- '  Date                        Description                                                     Programmer
+ '  Date               Description                             Programmer
  '  ---------------    ------------------------------------    ------------------
- '  07/19/2023            Initial Development                                        N. James George
+ '  07/19/2023         Initial Development                     N. James George
  '
 '*******************************************************************************************/
 
@@ -119,14 +119,14 @@ Global _
  '
  '  Macro Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -187,14 +187,14 @@ End Sub ' This statement ends the macro,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -307,14 +307,14 @@ End Sub ' This stastement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                               Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                       N. James George
  '
  '******************************************************************************************/
 
@@ -398,14 +398,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -448,16 +448,16 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal
- '              inputWorksheetParameter
- '                                         This parameter is the input worksheet.
+ '          inputWorksheetParameter
+ '                          This parameter is the input worksheet.
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -493,14 +493,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -746,14 +746,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                         N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -780,14 +780,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                          N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -819,14 +819,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -961,14 +961,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1021,34 +1021,34 @@ End Sub  ' This statement ends the public subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal
  '          tickerNameStringParameter
- '                                          This parameter holds the name of the stock ticker.
+ '                          This parameter holds the name of the stock ticker.
  '  ByVal
  '          openingPriceCurrencyParameter
- '                                          This parameter is the first opening price for this
- '                                          stock ticker.
+ '                          This parameter is the first opening price for this
+ '                          stock ticker.
  '  ByVal
  '          totalStockVolumeVariantParameter
- '                                          This parameter is the total stock volume for this
- '                                          stock ticker.
+ '                          This parameter is the total stock volume for this
+ '                          stock ticker.
  '  ByVal
  '          summaryRowLongParameter
- '                                          This parameter is the current summary table row index.
+ '                          This parameter is the current summary table row index.
  '  ByVal
  '          originalRowLongParameter
- '                                          This parameter is the current original data row index.
+ '                          This parameter is the current original data row index.
  '  ByVal
  '          lastRowFlagBooleanParameter
- '                                          This parameter indicates whether the program
- '                                          has reached the last record or not.
+ '                          This parameter indicates whether the program
+ '                          has reached the last record or not.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                        N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1169,14 +1169,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023             Initial Development                                         N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1273,14 +1273,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                       Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                          N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1347,9 +1347,9 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
  '  Date               Description                              Programmer
@@ -1612,22 +1612,22 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  Integer
- '              rowIntegerParameter
- '                                          This is the row number of the upper left corner of the range.
+ '          rowIntegerParameter
+ '                          This is the row number of the upper left corner of the range.
  '  Integer
- '              columnIntegerParameter
- '                                          This is the column number of the upper left corner of the range.
+ '          columnIntegerParameter
+ '                          This is the column number of the upper left corner of the range.
  '  String
- '              tableNameStringParameter
- '                                          This is the name of the new table.
+ '          tableNameStringParameter
+ '                          This is the name of the new table.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023             Initial Development                                         N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1713,14 +1713,14 @@ End Sub ' This statement ends the private subroutine,
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal
- '               rowIndexIntegerParameter
- '                                         This parameter holds the row index for the current record
- '                                         in the summary table.
+ '          rowIndexIntegerParameter
+ '                          This parameter holds the row index for the current record
+ '                          in the summary table.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1778,19 +1778,19 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Function Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal
- '              openingPriceDoubleParameter
- '                                         This parameter holds the first opening price of a ticker.
+ '          openingPriceDoubleParameter
+ '                          This parameter holds the first opening price of a ticker.
  '  ByVal
- '              closingPriceDoubleParameter
- '                                         This parameter holds the last closing price of a ticker.
+ '          closingPriceDoubleParameter
+ '                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1823,19 +1823,19 @@ End Function ' This statement ends the private function,
  '
  '  Function Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  ByVal
- '              openingPriceDoubleParameter
- '                                          This parameter holds the first opening price of a ticker.
+ '          openingPriceDoubleParameter
+ '                          This parameter holds the first opening price of a ticker.
  '  ByVal
- '              closingPriceDoubleParameter
- '                                          This parameter holds the last closing price of a ticker.
+ '          closingPriceDoubleParameter
+ '                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
