@@ -1,4 +1,4 @@
-This folder contains the unprocessed input files for the Stock Analysis, alphabetical_testing (Unprocessed).xlsx and Multiple_year_stock_data (Unprocessed).xlsx.
+This folder contains the unprocessed input files for the Stock Analysis, AlphabeticalTestingUnprocessed.xlsx and MultipleYearStockDataUnprocessed.xlsx.
 
 ## Copyright
 
