@@ -2,7 +2,7 @@
 
 ----
 
-# Stock Analysis in VBA
+# Stock Analysis Report
 
 ----
 
