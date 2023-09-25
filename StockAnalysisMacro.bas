@@ -2055,7 +2055,7 @@ Private Sub _
             columnNumberIntegerParameter _
                 As Integer)
     
-     ' These lines of code set the formats for the various columns.
+    ' These lines of code set the formats for the various columns.
      
     Worksheets _
         (workSheetNameStringParameter) _
@@ -2502,10 +2502,10 @@ Private Sub _
     ' to a Range object.
     
     For Each Row In Worksheets _
-                                (primarySheetNameStringParameter) _
-                                    .Range _
-                                        (tableNameStringParameter) _
-                                    .Rows
+                        (primarySheetNameStringParameter) _
+                            .Range _
+                                (tableNameStringParameter) _
+                            .Rows
  
         If Row.EntireRow.Hidden = False Then
     
