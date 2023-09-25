@@ -2,7 +2,7 @@
 
 ----
 
-# Stock Analysis Report
+# The VBA of Wall Street
 
 ----
 
