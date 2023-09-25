@@ -82,7 +82,9 @@ MS Excel, MS Visual Studio Code
   
 |&rarr; [./Resources/](./Resources/)
 
-  &emsp; |&rarr; [./Resources/"CrowdfundingBook (Unprocessed).xlsx"](./Resources/"CrowdfundingBook (Unprocessed).xlsx")
+  &emsp; |&rarr; [./Resources/AlphabeticalTestingUnprocessed.xlsx](./Resources/AlphabeticalTestingUnprocessed.xlsx)
+
+  &emsp; |&rarr; [./Resources/MultipleYearStockDataUnprocessed.xlsx](./Resources/MultipleYearStockDataUnprocessed.xlsx)  
 
   &emsp; |&rarr; [./Resources/README.md](./Resources/README.md)
 
