@@ -2291,7 +2291,7 @@ Private Sub _
     CopyTablePrivateSubRoutine _
         primarySheetNameStringParameter, _
         analysisSheetNameStringParameter, _
-        "Summary2018Table[#All]", _
+         "Summary" & primarySheetNameStringParameter & "Table[#All]", _
         "A2"
  
  
@@ -2357,7 +2357,7 @@ Private Sub _
     CopyTablePrivateSubRoutine _
         primarySheetNameStringParameter, _
         analysisSheetNameStringParameter, _
-        "Summary2018Table[#All]", _
+         "Summary" & primarySheetNameStringParameter & "Table[#All]", _
         "F2"
  
  
@@ -2423,7 +2423,7 @@ Private Sub _
     CopyTablePrivateSubRoutine _
         primarySheetNameStringParameter, _
         analysisSheetNameStringParameter, _
-        "Summary2018Table[#All]", _
+         "Summary" & primarySheetNameStringParameter & "Table[#All]", _
         "K2"
  
  
