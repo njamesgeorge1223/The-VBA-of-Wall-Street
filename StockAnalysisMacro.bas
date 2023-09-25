@@ -31,9 +31,9 @@ Attribute VB_Name = "Module1"
  '      ReturnAnalysisWorkSheetNamePrivateFunction
  '
  '
- '  Date                        Description                                                     Programmer
+ '  Date               Description                             Programmer
  '  ---------------    ------------------------------------    ------------------
- '  07/19/2023            Initial Development                                        N. James George
+ '  07/19/2023         Initial Development                     N. James George
  '
 '*******************************************************************************************/
 
@@ -122,14 +122,14 @@ Global _
  '
  '  Macro Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -211,14 +211,14 @@ End Sub ' This statement ends the macro,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -331,14 +331,14 @@ End Sub ' This stastement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -422,14 +422,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -475,13 +475,13 @@ End Sub ' This statement ends the private subroutine,
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              inputWorkSheetNameParameter
- '                                         This parameter is the input worksheet name.
+ '          inputWorkSheetNameParameter
+ '                          This parameter is the input worksheet name.
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -520,14 +520,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type     Name           Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023            Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -773,14 +773,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                         N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -807,14 +807,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                      Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                          N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -846,14 +846,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -945,14 +945,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1087,14 +1087,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                     n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1147,34 +1147,34 @@ End Sub  ' This statement ends the public subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
  '          tickerNameStringParameter
- '                                          This parameter holds the name of the stock ticker.
+ '                          This parameter holds the name of the stock ticker.
  '  Currency
  '          openingPriceCurrencyParameter
- '                                          This parameter is the first opening price for this
- '                                          stock ticker.
+ '                          This parameter is the first opening price for this
+ '                          stock ticker.
  '  Variant
  '          totalStockVolumeVariantParameter
- '                                          This parameter is the total stock volume for this
- '                                          stock ticker.
+ '                          This parameter is the total stock volume for this
+ '                          stock ticker.
  '  Long Integer
  '          summaryRowLongParameter
- '                                          This parameter is the current summary table row index.
+ '                          This parameter is the current summary table row index.
  '  Long Integer
  '          originalRowLongParameter
- '                                          This parameter is the current original data row index.
+ '                          This parameter is the current original data row index.
  '  Boolean
  '          lastRowFlagBooleanParameter
- '                                          This parameter indicates whether the program
- '                                          has reached the last record or not.
+ '                          This parameter indicates whether the program
+ '                          has reached the last record or not.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                        N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1295,14 +1295,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023             Initial Development                                         N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1399,14 +1399,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
- '  Date                        Description                                                       Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023            Initial Development                                          N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1473,9 +1473,9 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                   Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
- '  n/a       n/a                      n/a
+ '  n/a     n/a             n/a
  '
  '
  '  Date               Description                              Programmer
@@ -1738,22 +1738,22 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  Integer
- '              rowIntegerParameter
- '                                          This is the row number of the upper left corner of the range.
+ '          rowIntegerParameter
+ '                          This is the row number of the upper left corner of the range.
  '  Integer
- '              columnIntegerParameter
- '                                          This is the column number of the upper left corner of the range.
+ '          columnIntegerParameter
+ '                          This is the column number of the upper left corner of the range.
  '  String
- '              tableNameStringParameter
- '                                          This is the name of the new table.
+ '          tableNameStringParameter
+ '                          This is the name of the new table.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023             Initial Development                                         N. James George
+ '  07/20/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1836,17 +1836,17 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  Integer
- '               rowIndexIntegerParameter
- '                                         This parameter holds the row index for the current record
- '                                         in the summary table.
+ '          rowIndexIntegerParameter
+ '                          This parameter holds the row index for the current record
+ '                          in the summary table.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1903,16 +1903,16 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              workSheetNameStringParameter
- '                                         This parameter is the name of the input worksheet.
+ '          workSheetNameStringParameter
+ '                          This parameter is the name of the input worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -1963,16 +1963,16 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              workSheetNameStringParameter
- '                                         This parameter is the name of the input worksheet.
+ '          workSheetNameStringParameter
+ '                          This parameter is the name of the input worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2026,13 +2026,13 @@ End Sub ' This statement ends the private subroutine,
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              workSheetNameStringParameter
- '                                         This parameter is the name of the input worksheet.
+ '          workSheetNameStringParameter
+ '                          This parameter is the name of the input worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2121,16 +2121,16 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              workSheetNameStringParameter
- '                                         This parameter is the name of the input worksheet.
+ '          workSheetNameStringParameter
+ '                          This parameter is the name of the input worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2201,16 +2201,16 @@ End Sub ' This statement ends the private subroutine,
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              primarySheetNameStringParameter
- '                                         This parameter is the name of the Summary Worksheet.
+ '          primarySheetNameStringParameter
+ '                          This parameter is the name of the Summary Worksheet.
  '  String
- '              analysisSheetNameStringParameter
- '                                         This parameter is the name of the Analysis Worksheet.
+ '          analysisSheetNameStringParameter
+ '                          This parameter is the name of the Analysis Worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2250,19 +2250,19 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              primarySheetNameStringParameter
- '                                         This parameter is the name of the Summary Worksheet.
+ '          primarySheetNameStringParameter
+ '                          This parameter is the name of the Summary Worksheet.
  '  String
- '              analysisSheetNameStringParameter
- '                                         This parameter is the name of the Analysis Worksheet.
+ '          analysisSheetNameStringParameter
+ '                          This parameter is the name of the Analysis Worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2320,16 +2320,16 @@ End Sub ' This statement ends the private subroutine,
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              primarySheetNameStringParameter
- '                                         This parameter is the name of the Summary Worksheet.
+ '          primarySheetNameStringParameter
+ '                          This parameter is the name of the Summary Worksheet.
  '  String
- '              analysisSheetNameStringParameter
- '                                         This parameter is the name of the Analysis Worksheet.
+ '          analysisSheetNameStringParameter
+ '                          This parameter is the name of the Analysis Worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
          
@@ -2386,16 +2386,16 @@ End Sub ' This statement ends the private subroutine,
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              primarySheetNameStringParameter
- '                                         This parameter is the name of the Summary Worksheet.
+ '          primarySheetNameStringParameter
+ '                          This parameter is the name of the Summary Worksheet.
  '  String
- '              analysisSheetNameStringParameter
- '                                         This parameter is the name of the Analysis Worksheet.
+ '          analysisSheetNameStringParameter
+ '                          This parameter is the name of the Analysis Worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2448,25 +2448,25 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              primarySheetNameStringParameter
- '                                         This parameter is the name of the Summary Worksheet.
+ '          primarySheetNameStringParameter
+ '                          This parameter is the name of the Summary Worksheet.
  '  String
- '              analysisSheetNameStringParameter
- '                                         This parameter is the name of the Analysis Worksheet.
+ '          analysisSheetNameStringParameter
+ '                          This parameter is the name of the Analysis Worksheet.
  '  String
- '              tableNameStringParameter
- '                                         This parameter is the name of the input table.
+ '          tableNameStringParameter
+ '                          This parameter is the name of the input table.
  '  String
- '              destinationStringParameter
- '                                         This parameter is the location of the copied table (i.e., "A1").
+ '          destinationStringParameter
+ '                          This parameter is the location of the copied table (i.e., "A1").
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2542,26 +2542,26 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              workSheetNameStringParameter
- '                                         This parameter is the name of the input worksheet.
+ '          workSheetNameStringParameter
+ '                          This parameter is the name of the input worksheet.
  '  String
- '              tableNameStringParameter
- '                                         This parameter is the name of the input table.
+ '          tableNameStringParameter
+ '                          This parameter is the name of the input table.
  '  String
- '              columnNameStringParameter
- '                                         This parameter is the name of the table column for sorting.
+ '          columnNameStringParameter
+ '                          This parameter is the name of the table column for sorting.
  '  Boolean
- '              descendingFlagBooleanParameter
- '                                         This parameter indicates whether the sorting is in descending
- '                                         or ascending order.
+ '          descendingFlagBooleanParameter
+ '                          This parameter indicates whether the sorting is in descending
+ '                          or ascending order.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2654,19 +2654,19 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Function Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  Double
- '              openingPriceDoubleParameter
- '                                         This parameter holds the first opening price of a ticker.
+ '          openingPriceDoubleParameter
+ '                          This parameter holds the first opening price of a ticker.
  '  Double
- '              closingPriceDoubleParameter
- '                                         This parameter holds the last closing price of a ticker.
+ '          closingPriceDoubleParameter
+ '                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2699,19 +2699,19 @@ End Function ' This statement ends the private function,
  '
  '  Function Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  Double
- '              openingPriceDoubleParameter
- '                                          This parameter holds the first opening price of a ticker.
+ '          openingPriceDoubleParameter
+ '                          This parameter holds the first opening price of a ticker.
  '  Double
- '              closingPriceDoubleParameter
- '                                          This parameter holds the last closing price of a ticker.
+ '          closingPriceDoubleParameter
+ '                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
@@ -2745,16 +2745,16 @@ End Function ' This statement ends the private function,
  '
  '  Function Parameters:
  '
- '  Type     Name                  Description
+ '  Type    Name            Description
  '  -----   -------------   ----------------------------------------------
  '  String
- '              workSheetNameStringParameter
- '                                          This parameter is the name of the Summary Table Worksheet.
+ '          workSheetNameStringParameter
+ '                          This parameter is the name of the Summary Table Worksheet.
  '
  '
- '  Date                         Description                                                     Programmer
+ '  Date               Description                              Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023             Initial Development                                         N. James George
+ '  07/19/2023         Initial Development                      N. James George
  '
  '******************************************************************************************/
 
