@@ -15,6 +15,8 @@ Attribute VB_Name = "Module1"
  '      CreateSummaryTablePrivateSubRoutine
  '      CreateChangeTablePrivateSubRoutine
  '      ConvertDataAndSummaryRangesToTablesPrivateSubRoutine
+ '      CreateFormatAnalysisWorkSheetPrivateSubRoutine
+ '
  '      ChangeStringToDateInDateColumnPrivateSubRoutine
  '      SetUpTitlesForSummaryDataPrivateSubRoutine
  '      CreateSummaryDataRowPrivateSubRoutine
@@ -26,11 +28,12 @@ Attribute VB_Name = "Module1"
  '
  '      CalculateYearlyChangePrivateFunction
  '      CalculatePercentChangePrivateFunction
+ '      ReturnAnalysisWorkSheetNamePrivateFunction
  '
  '
- '  Date               Description                             Programmer
+ '  Date                        Description                                                     Programmer
  '  ---------------    ------------------------------------    ------------------
- '  07/19/2023         Initial Development                     N. James George
+ '  07/19/2023            Initial Development                                        N. James George
  '
 '*******************************************************************************************/
 
@@ -119,14 +122,14 @@ Global _
  '
  '  Macro Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -145,33 +148,54 @@ Sub _
                         (xlUp) _
                     .Row
 
-
-    ' These subroutines format the active worksheet.
-
-    FormatWorkSheetPrivateSubRoutine _
-       ActiveWorkbook.ActiveSheet
-
-    FormatStockDataPrivateSubRoutine
-
-    FormatSummaryDataPrivateSubRoutine
+    If InStr _
+            (1, _
+            ActiveSheet.Name, _
+            "Analysis", _
+            vbTextCompare) = 0 _
+        And InStr _
+                (1, _
+                ActiveSheet.Name, _
+                "analysis", _
+                vbTextCompare) = 0 Then
     
-    FormatTitlesPrivateSubRoutine
+        ' These subroutines format the active worksheet.
+
+        FormatWorkSheetPrivateSubRoutine _
+            (ActiveWorkbook.ActiveSheet.Name)
+
+        FormatStockDataPrivateSubRoutine
+
+        FormatSummaryDataPrivateSubRoutine
+    
+        FormatTitlesPrivateSubRoutine
     
         
-    ' This subroutine summarizes the raw stock data and writes it to the summary table.
+        ' This subroutine summarizes the raw stock data and writes it to the summary table.
     
-    CreateSummaryTablePrivateSubRoutine
-    
-    
-    ' This subroutine creates a second summary table for the tickers with the greatest
-    ' changes in percentage and greatest total stock volume.
-    
-    CreateChangeTablePrivateSubRoutine
+        CreateSummaryTablePrivateSubRoutine
     
     
-    ' This subroutine converts the data and summary ranges to tables.
+        ' This subroutine creates a second summary table for the tickers with the greatest
+        ' changes in percentage and greatest total stock volume.
     
-    ConvertDataAndSummaryRangesToTablesPrivateSubRoutine
+        CreateChangeTablePrivateSubRoutine
+    
+    
+        ' This subroutine converts the data and summary ranges to tables.
+    
+        ConvertDataAndSummaryRangesToTablesPrivateSubRoutine
+    
+    
+        ' This subroutine creates, formats, and populates the Analysis Worksheet.
+    
+        CreateFormatAnalysisWorkSheetPrivateSubRoutine
+
+    Else
+    
+        MsgBox ("Please select the Summary Data Worksheet not the Analysis Worksheet!")
+    
+    End If
 
 End Sub ' This statement ends the macro,
 ' SummarizeStocksMacro.
@@ -187,14 +211,14 @@ End Sub ' This statement ends the macro,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -307,14 +331,14 @@ End Sub ' This stastement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                               Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                       N. James George
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -398,14 +422,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -448,34 +472,37 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal
- '          inputWorksheetParameter
- '                          This parameter is the input worksheet.
+ '  String
+ '              inputWorkSheetNameParameter
+ '                                         This parameter is the input worksheet name.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
-Private Sub _
-    FormatWorkSheetPrivateSubRoutine _
+Private Sub FormatWorkSheetPrivateSubRoutine _
         (ByVal _
-            inputWorksheetParameter _
-                As Worksheet)
+            inputWorkSheetNameParameter _
+                As String)
     
-    inputWorksheetParameter _
-        .Cells _
-            .Font _
+    ActiveWorkbook _
+        .Sheets _
+            (inputWorkSheetNameParameter) _
+                .Cells _
+                .Font _
                 .Name _
                     = "Garamond"
     
-    inputWorksheetParameter _
-        .Cells _
-            .Font _
+    ActiveWorkbook _
+        .Sheets _
+            (inputWorkSheetNameParameter) _
+                .Cells _
+                .Font _
                 .Size _
                     = 14
     
@@ -493,14 +520,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -746,14 +773,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      N. James George
+ '  07/20/2023            Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -780,14 +807,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                      Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      N. James George
+ '  07/20/2023            Initial Development                                          N. James George
  '
  '******************************************************************************************/
 
@@ -809,6 +836,105 @@ End Sub ' This statement ends the private subroutine,
 
 '*******************************************************************************************
  '
+ '  Subroutine Name:  CreateFormatAnalysisWorkSheetPrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '      This function creates the Analysis Worksheet, formats it, copies three summary
+ '      summary tables over to it, and sorts those tables.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  n/a       n/a                     n/a
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    CreateFormatAnalysisWorkSheetPrivateSubRoutine()
+    
+    Dim _
+        primarySheetNameStringVariable _
+            As String
+    
+    Dim _
+        analysisSheetNameStringVariable _
+            As String
+            
+    Dim _
+        analysisWorkSheetExistsBooleanVariable _
+            As Boolean
+
+  
+    ' This line of code saves the primary Worksheet's name to a variable.
+    
+    primarySheetNameStringVariable _
+        = ActiveWorkbook _
+                .ActiveSheet _
+                .Name
+                 
+                
+    ' This line of code saves the primary Worksheet's name to a variable.
+                
+    analysisSheetNameStringVariable _
+        = ReturnAnalysisWorkSheetNamePrivateFunction _
+                    (primarySheetNameStringVariable)
+        
+    
+    ' This line of code checks if the Analysis Worksheet exists.
+    
+    On Error Resume Next
+    
+    analysisWorkSheetExistsBooleanVariable _
+        = (ActiveWorkbook _
+                .Sheets _
+                    (analysisSheetNameStringVariable) _
+             .Index > 0)
+    
+       
+    If analysisWorkSheetExistsBooleanVariable = False Then
+       
+        ' This subroutine creates and activates the Analysis Worksheet.
+    
+        CreateWorkSheetPrivateSubRoutine _
+            analysisSheetNameStringVariable
+        
+    
+        ' This subroutine formats the Analysis Worksheet.
+    
+        FormatAnalysisWorkSheetPrivateSubRoutine _
+            analysisSheetNameStringVariable
+        
+        
+        ' This subroutine copies, sorts, and renames the summary table three times.
+               
+        SetUpSortedTablesPrivateSubRoutine _
+            primarySheetNameStringVariable, _
+            analysisSheetNameStringVariable
+        
+        ActiveWorkbook _
+            .Worksheets _
+                (primarySheetNameStringVariable) _
+            .Activate
+    
+    Else
+    
+          MsgBox ("Please delete the Analysis Worksheet and select the Summary Table Worksheet before proceeding!")
+      
+    End If
+        
+End Sub ' This statement ends the private subroutine,
+' CreateAnalysisWorkSheetPrivateSubRoutine.
+
+'*******************************************************************************************
+ '
  '  Subroutine Name:  ChangeStringToDateInDateColumnPrivateSubRoutine
  '
  '  Subroutine Type: Private
@@ -819,14 +945,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -961,14 +1087,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                     n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -1021,34 +1147,34 @@ End Sub  ' This statement ends the public subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal
+ '  String
  '          tickerNameStringParameter
- '                          This parameter holds the name of the stock ticker.
- '  ByVal
+ '                                          This parameter holds the name of the stock ticker.
+ '  Currency
  '          openingPriceCurrencyParameter
- '                          This parameter is the first opening price for this
- '                          stock ticker.
- '  ByVal
+ '                                          This parameter is the first opening price for this
+ '                                          stock ticker.
+ '  Variant
  '          totalStockVolumeVariantParameter
- '                          This parameter is the total stock volume for this
- '                          stock ticker.
- '  ByVal
+ '                                          This parameter is the total stock volume for this
+ '                                          stock ticker.
+ '  Long Integer
  '          summaryRowLongParameter
- '                          This parameter is the current summary table row index.
- '  ByVal
+ '                                          This parameter is the current summary table row index.
+ '  Long Integer
  '          originalRowLongParameter
- '                          This parameter is the current original data row index.
- '  ByVal
+ '                                          This parameter is the current original data row index.
+ '  Boolean
  '          lastRowFlagBooleanParameter
- '                          This parameter indicates whether the program
- '                          has reached the last record or not.
+ '                                          This parameter indicates whether the program
+ '                                          has reached the last record or not.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023             Initial Development                                        N. James George
  '
  '******************************************************************************************/
 
@@ -1169,14 +1295,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      N. James George
+ '  07/20/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -1273,14 +1399,14 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
- '  Date               Description                              Programmer
+ '  Date                        Description                                                       Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      N. James George
+ '  07/20/2023            Initial Development                                          N. James George
  '
  '******************************************************************************************/
 
@@ -1347,9 +1473,9 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                   Description
  '  -----   -------------   ----------------------------------------------
- '  n/a     n/a             n/a
+ '  n/a       n/a                      n/a
  '
  '
  '  Date               Description                              Programmer
@@ -1612,22 +1738,22 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Subroutine Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
  '  Integer
- '          rowIntegerParameter
- '                          This is the row number of the upper left corner of the range.
+ '              rowIntegerParameter
+ '                                          This is the row number of the upper left corner of the range.
  '  Integer
- '          columnIntegerParameter
- '                          This is the column number of the upper left corner of the range.
+ '              columnIntegerParameter
+ '                                          This is the column number of the upper left corner of the range.
  '  String
- '          tableNameStringParameter
- '                          This is the name of the new table.
+ '              tableNameStringParameter
+ '                                          This is the name of the new table.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/20/2023         Initial Development                      N. James George
+ '  07/20/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -1712,15 +1838,15 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal
- '          rowIndexIntegerParameter
- '                          This parameter holds the row index for the current record
- '                          in the summary table.
+ '  Integer
+ '               rowIndexIntegerParameter
+ '                                         This parameter holds the row index for the current record
+ '                                         in the summary table.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -1768,6 +1894,756 @@ End Sub ' This statement ends the private subroutine,
 
 '*******************************************************************************************
  '
+ '  Subroutine Name:  CreateWorkSheetPrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine creates a worksheet if it does not already exist.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              workSheetNameStringParameter
+ '                                         This parameter is the name of the input worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    CreateWorkSheetPrivateSubRoutine _
+        (ByVal _
+            workSheetNameStringParameter _
+                As String)
+                
+    Dim _
+        workSheetExistsBooleanVariable _
+            As Boolean
+    
+    
+    ' This line of code checks if the worksheet exists.
+    
+    On Error Resume Next
+    
+    workSheetExistsBooleanVariable _
+        = (ActiveWorkbook _
+                .Sheets _
+                    (workSheetNameStringParameter) _
+             .Index > 0)
+    
+    
+    ' This selection statement creates the worksheet if it does not exist.
+    
+    If workSheetExistsBooleanVariable = False Then
+    
+        Sheets _
+            .Add _
+            .Name _
+                = workSheetNameStringParameter
+      
+    End If
+
+End Sub ' This statement ends the private subroutine,
+' CreateAnalysisWorkSheetPrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  FormatAnalysisWorkSheetPrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine formats the Analysis Worksheet.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              workSheetNameStringParameter
+ '                                         This parameter is the name of the input worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    FormatAnalysisWorkSheetPrivateSubRoutine _
+        (ByVal _
+            workSheetNameStringParameter _
+                As String)
+    
+    '  This repetition loop formats the columns for three summary tables.
+    
+    For columnIndexCounterVariable = 1 To 11 Step 5
+    
+        FormatLocalSummaryDataPrivateSubRoutine _
+             workSheetNameStringParameter, _
+             columnIndexCounterVariable
+    
+    Next ' This statement ends the first repetition loop.
+    
+    
+    ' This subroutine formats the table title row.
+    
+    FormatTitlesPrivateSubRoutine
+  
+  
+    ' This subroutine inserts the table titles.
+    
+    InsertAnalysisWorkSheetRowAndTitlesPrivateSubRoutine _
+        workSheetNameStringParameter
+  
+  
+    ' This subroutine formats the whole worksheet.
+    
+    FormatWorkSheetPrivateSubRoutine _
+        workSheetNameStringParameter
+    
+End Sub ' This statement ends the private subroutine,
+' FormatAnalysisWorkSheetPrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  FormatLocalSummaryDataPrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine formats a section of a worksheet for a summary table.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              workSheetNameStringParameter
+ '                                         This parameter is the name of the input worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    FormatLocalSummaryDataPrivateSubRoutine _
+        (ByVal _
+            workSheetNameStringParameter _
+                As String, _
+         ByVal _
+            columnNumberIntegerParameter _
+                As Integer)
+    
+     ' These lines of code set the formats for the various columns.
+     
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter) _
+            .NumberFormat _
+                = "General"
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter + 1) _
+            .NumberFormat _
+                = "#,##0.00"
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter + 2) _
+            .NumberFormat _
+                = "0.00%"
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter + 3) _
+            .NumberFormat _
+                = "#,##0"
+    
+        
+    ' These lines of code set the column widths for the various columns.
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter) _
+            .ColumnWidth _
+                = 10
+                
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter + 1) _
+            .ColumnWidth _
+                = 16
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter + 2) _
+            .ColumnWidth _
+                = 16
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Columns _
+                (columnNumberIntegerParameter + 3) _
+            .ColumnWidth _
+                = 25
+    
+End Sub ' This statement ends the private subroutine,
+' FormatLocalSummaryDataPrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  InsertAnalysisWorkSheetRowAndTitlesPrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine inserts a row at the top of the worksheet, formats it,
+ '       and writes titles to it.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              workSheetNameStringParameter
+ '                                         This parameter is the name of the input worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    InsertAnalysisWorkSheetRowAndTitlesPrivateSubRoutine _
+        (ByVal _
+            workSheetNameStringParameter _
+                As String)
+    
+    ' This line of code inserts a row for the table titles.
+
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Range("A1") _
+            .EntireRow _
+            .Insert
+            
+            
+    ' This line of code formats the font for the first row as bold.
+            
+     Worksheets _
+        (workSheetNameStringParameter) _
+            .Range("A1") _
+            .EntireRow _
+            .Font _
+            .Bold _
+                = True
+             
+             
+    ' These lines of code write the table titles to the appropriate cells.
+    
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Cells _
+                (1, 1) _
+            .Value _
+                = "Greatest % Increase"
+            
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Cells _
+                (1, 6) _
+            .Value _
+                = "Greatest % Decrease"
+            
+    Worksheets _
+        (workSheetNameStringParameter) _
+            .Cells _
+                (1, 11) _
+            .Value _
+                = "Greatest Total Volume"
+
+End Sub ' This statement ends the private subroutine,
+' InsertAnalysisWorkSheetRowAndTitlesPrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  SetUpSortedTablesPrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine insert a row at the top of the worksheet, formats it,
+ '       and writes titles to it.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              primarySheetNameStringParameter
+ '                                         This parameter is the name of the Summary Worksheet.
+ '  String
+ '              analysisSheetNameStringParameter
+ '                                         This parameter is the name of the Analysis Worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    SetUpSortedTablesPrivateSubRoutine _
+        (ByVal _
+            primarySheetNameStringParameter _
+                As String, _
+         ByVal _
+            analysisSheetNameStringParameter _
+                As String)
+                
+    SetUpGreatestIncreaseTablePrivateSubRoutine _
+        primarySheetNameStringParameter, _
+        analysisSheetNameStringParameter
+    
+    SetUpGreatestDecreaseTablePrivateSubRoutine _
+        primarySheetNameStringParameter, _
+        analysisSheetNameStringParameter
+
+    SetUpGreatestTotalVolumeTablePrivateSubRoutine _
+        primarySheetNameStringParameter, _
+        analysisSheetNameStringParameter
+        
+End Sub ' This statement ends the private subroutine,
+' SetUpSortedTablesPrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  SetUpGreatestIncreaseTablePrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine copies a summary table to the Analysis Worksheet and sorts it
+ '       by the percent change column in descending order.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              primarySheetNameStringParameter
+ '                                         This parameter is the name of the Summary Worksheet.
+ '  String
+ '              analysisSheetNameStringParameter
+ '                                         This parameter is the name of the Analysis Worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    SetUpGreatestIncreaseTablePrivateSubRoutine _
+        (ByVal _
+            primarySheetNameStringParameter _
+                As String, _
+         ByVal _
+            analysisSheetNameStringParameter _
+                As String)
+
+    ' This line of code copies the first summary table from the Summary Worksheet
+    ' to the Analysis Spreadsheet.
+                   
+    CopyTablePrivateSubRoutine _
+        primarySheetNameStringParameter, _
+        analysisSheetNameStringParameter, _
+        "Summary2018Table[#All]", _
+        "A2"
+ 
+ 
+    ' This line of code renames the copied table.
+ 
+    Worksheets _
+        (analysisSheetNameStringParameter) _
+            .ListObjects(1) _
+            .Name _
+                = "GreatestIncreaseTable"
+     
+     
+     ' This line of code sorts the copied table, Greatest Increase Table.
+     
+     SortTablePrivateSubRoutine _
+        analysisSheetNameStringParameter, _
+        "GreatestIncreaseTable", _
+        "Percent Change", _
+        True
+
+End Sub ' This statement ends the private subroutine,
+' SetUpGreatestIncreaseTablePrivateSubRoutine.
+        
+ '*******************************************************************************************
+ '
+ '  Subroutine Name:  SetUpGreatestDecreaseTablePrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine copies a summary table to the Analysis Worksheet and sorts it
+ '       by the percent change column in ascending order.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              primarySheetNameStringParameter
+ '                                         This parameter is the name of the Summary Worksheet.
+ '  String
+ '              analysisSheetNameStringParameter
+ '                                         This parameter is the name of the Analysis Worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+         
+Private Sub _
+    SetUpGreatestDecreaseTablePrivateSubRoutine _
+        (ByVal _
+            primarySheetNameStringParameter _
+                As String, _
+         ByVal _
+            analysisSheetNameStringParameter _
+                As String)
+
+    ' This line of code copies the first summary table.
+                   
+    CopyTablePrivateSubRoutine _
+        primarySheetNameStringParameter, _
+        analysisSheetNameStringParameter, _
+        "Summary2018Table[#All]", _
+        "F2"
+ 
+ 
+    ' This line of code renames the copied table.
+ 
+    Worksheets _
+        (analysisSheetNameStringParameter) _
+            .ListObjects(2) _
+            .Name _
+                = "GreatestDecreaseTable"
+     
+     
+     ' This line of code sorts the Greatest Increase Table.
+     
+     SortTablePrivateSubRoutine _
+        analysisSheetNameStringParameter, _
+        "GreatestDecreaseTable", _
+        "Percent Change", _
+        False
+
+End Sub ' This statement ends the private subroutine,
+' SetUpGreatestDecreaseTablePrivateSubRoutine.
+        
+ '*******************************************************************************************
+ '
+ '  Subroutine Name:  SetUpGreatestTotalVolumeTablePrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine copies a summary table to the Analysis Worksheet and sorts it
+ '       by the total volume column in descending order.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              primarySheetNameStringParameter
+ '                                         This parameter is the name of the Summary Worksheet.
+ '  String
+ '              analysisSheetNameStringParameter
+ '                                         This parameter is the name of the Analysis Worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    SetUpGreatestTotalVolumeTablePrivateSubRoutine _
+        (ByVal _
+            primarySheetNameStringParameter _
+                As String, _
+         ByVal _
+            analysisSheetNameStringParameter _
+                As String)
+
+    ' This line of code copies the first summary table.
+                   
+    CopyTablePrivateSubRoutine _
+        primarySheetNameStringParameter, _
+        analysisSheetNameStringParameter, _
+        "Summary2018Table[#All]", _
+        "K2"
+ 
+ 
+    ' This line of code renames the copied table.
+ 
+    Worksheets _
+        (analysisSheetNameStringParameter) _
+            .ListObjects(3) _
+            .Name _
+                = "GreatestTotalVolumeTable"
+     
+     
+     ' This line of code sorts the Greatest Increase Table.
+     
+     SortTablePrivateSubRoutine _
+        analysisSheetNameStringParameter, _
+        "GreatestTotalVolumeTable", _
+        "Total Stock Volume", _
+        True
+
+End Sub ' This statement ends the private subroutine,
+' SetUpGreatestIncreaseTablePrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  CopyTablePrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine copies a table from one location to another.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              primarySheetNameStringParameter
+ '                                         This parameter is the name of the Summary Worksheet.
+ '  String
+ '              analysisSheetNameStringParameter
+ '                                         This parameter is the name of the Analysis Worksheet.
+ '  String
+ '              tableNameStringParameter
+ '                                         This parameter is the name of the input table.
+ '  String
+ '              destinationStringParameter
+ '                                         This parameter is the location of the copied table (i.e., "A1").
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    CopyTablePrivateSubRoutine _
+        (ByVal _
+            primarySheetNameStringParameter _
+                As String, _
+         ByVal _
+            analysisSheetNameStringParameter _
+                As String, _
+         ByVal _
+            tableNameStringParameter _
+                As String, _
+         ByVal _
+            destinationStringParameter _
+                As String)
+                
+    Dim currentRangeObject As Range
+ 
+ 
+    ' This repetition loopiterates through the table and assigns the rows
+    ' to a Range object.
+    
+    For Each Row In Worksheets _
+                                (primarySheetNameStringParameter) _
+                                    .Range _
+                                        (tableNameStringParameter) _
+                                    .Rows
+ 
+        If Row.EntireRow.Hidden = False Then
+    
+            If currentRangeObject Is Nothing Then
+                
+                Set _
+                    currentRangeObject _
+                        = Row
+            
+            End If
+            
+            Set _
+                currentRangeObject _
+                    = Union _
+                            (Row, _
+                            currentRangeObject)
+        
+        End If
+ 
+    Next Row ' This statement ends the first repetition loop.
+ 
+ 
+    ' This line of code copies the Range Object to the destination.
+    
+    currentRangeObject _
+        .Copy _
+                        Destination _
+                                :=Worksheets _
+                                        (analysisSheetNameStringParameter) _
+                                            .Range _
+                                                (destinationStringParameter)
+                                                
+End Sub ' This statement ends the private subroutine,
+' CopyTablePrivateSubRoutine.
+
+'*******************************************************************************************
+ '
+ '  Subroutine Name:  SortTablePrivateSubRoutine
+ '
+ '  Subroutine Type: Private
+ '
+ '  Subroutine Description:
+ '       This subroutine sorts a table.
+ '
+ '  Subroutine Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              workSheetNameStringParameter
+ '                                         This parameter is the name of the input worksheet.
+ '  String
+ '              tableNameStringParameter
+ '                                         This parameter is the name of the input table.
+ '  String
+ '              columnNameStringParameter
+ '                                         This parameter is the name of the table column for sorting.
+ '  Boolean
+ '              descendingFlagBooleanParameter
+ '                                         This parameter indicates whether the sorting is in descending
+ '                                         or ascending order.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Sub _
+    SortTablePrivateSubRoutine _
+        (ByVal _
+            workSheetNameStringParameter _
+                As String, _
+         ByVal _
+            tableNameStringParameter _
+                As String, _
+         ByVal _
+            columnNameStringParameter _
+                As String, _
+         ByVal _
+            descendingFlagBooleanParameter _
+                As Boolean)
+
+    Dim _
+        tableListObject _
+            As ListObject
+    
+    Dim _
+        sortColumnRangeObject _
+            As Range
+
+
+    Set _
+        tableListObject _
+            = Worksheets _
+                    (workSheetNameStringParameter) _
+                        .ListObjects _
+                            (tableNameStringParameter)
+
+    Set _
+        sortColumnRangeObject _
+            = Range(tableNameStringParameter & "[" & columnNameStringParameter & "]")
+                
+    
+    If descendingFlagBooleanParameter = True Then
+                
+        With tableListObject.Sort
+        
+            .SortFields.Clear
+        
+            .SortFields _
+                .Add _
+                    Key:=sortColumnRangeObject, _
+                    SortOn:=xlSortOnValues, _
+                    Order:=xlDescending
+        
+            .Header = xlYes
+        
+            .Apply
+
+        End With
+        
+    Else
+    
+        With tableListObject.Sort
+        
+            .SortFields.Clear
+        
+            .SortFields _
+                .Add _
+                    Key:=sortColumnRangeObject, _
+                    SortOn:=xlSortOnValues, _
+                    Order:=xlAscending
+        
+            .Header = xlYes
+        
+            .Apply
+
+        End With
+    
+    End If
+
+End Sub ' This statement ends the private subroutine,
+' SortTablePrivateSubRoutine.
+
+'*******************************************************************************************
+ '
  '  Function Name:  CalculateYearlyChangePrivateFunction
  '
  '  Function Type: Private
@@ -1778,19 +2654,19 @@ End Sub ' This statement ends the private subroutine,
  '
  '  Function Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal
- '          openingPriceDoubleParameter
- '                          This parameter holds the first opening price of a ticker.
- '  ByVal
- '          closingPriceDoubleParameter
- '                          This parameter holds the last closing price of a ticker.
+ '  Double
+ '              openingPriceDoubleParameter
+ '                                         This parameter holds the first opening price of a ticker.
+ '  Double
+ '              closingPriceDoubleParameter
+ '                                         This parameter holds the last closing price of a ticker.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
@@ -1823,28 +2699,28 @@ End Function ' This statement ends the private function,
  '
  '  Function Parameters:
  '
- '  Type    Name            Description
+ '  Type     Name                  Description
  '  -----   -------------   ----------------------------------------------
- '  ByVal
- '          openingPriceDoubleParameter
- '                          This parameter holds the first opening price of a ticker.
- '  ByVal
- '          closingPriceDoubleParameter
- '                          This parameter holds the last closing price of a ticker.
+ '  Double
+ '              openingPriceDoubleParameter
+ '                                          This parameter holds the first opening price of a ticker.
+ '  Double
+ '              closingPriceDoubleParameter
+ '                                          This parameter holds the last closing price of a ticker.
  '
  '
- '  Date               Description                              Programmer
+ '  Date                         Description                                                     Programmer
  '  ---------------    ------------------------------------     ------------------
- '  07/19/2023         Initial Development                      N. James George
+ '  07/19/2023             Initial Development                                         N. James George
  '
  '******************************************************************************************/
 
 Private Function _
-    CalculatePercentChangePrivateFunction( _
-        ByVal _
+    CalculatePercentChangePrivateFunction _
+        (ByVal _
             openingPriceDoubleParameter _
                 As Double, _
-        ByVal _
+         ByVal _
             closingPriceDoubleParameter _
                 As Double) _
 As Double
@@ -1855,3 +2731,43 @@ As Double
 
 End Function ' This statement ends the private function,
 ' CalculatePercentChangePrivateFunction.
+
+
+'*******************************************************************************************
+ '
+ '  Function Name:  ReturnAnalysisWorkSheetNamePrivateFunction
+ '
+ '  Function Type: Private
+ '
+ '  Function Description:
+ '      This function returns the Analysis Worksheet name based on the Summary Table
+ '      Worksheet.
+ '
+ '  Function Parameters:
+ '
+ '  Type     Name                  Description
+ '  -----   -------------   ----------------------------------------------
+ '  String
+ '              workSheetNameStringParameter
+ '                                          This parameter is the name of the Summary Table Worksheet.
+ '
+ '
+ '  Date                         Description                                                     Programmer
+ '  ---------------    ------------------------------------     ------------------
+ '  07/19/2023             Initial Development                                         N. James George
+ '
+ '******************************************************************************************/
+
+Private Function _
+    ReturnAnalysisWorkSheetNamePrivateFunction _
+        (ByVal _
+            workSheetNameStringParameter _
+                As String) _
+As String
+
+    ReturnAnalysisWorkSheetNamePrivateFunction _
+        = "Analysis " & workSheetNameStringParameter
+
+End Function ' This statement ends the private function,
+' ReturnAnalysisWorkSheetNamePrivateFunction.
+
