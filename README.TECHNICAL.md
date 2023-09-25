@@ -94,9 +94,9 @@ MS Excel, MS Visual Studio Code
 
 ----
 
-[MS Excel Help and Learning](https://support.microsoft.com/en-us/excel) \
+[MS Excel Help and Learning](https://support.microsoft.com/en-us/excel)
 
-[MS Office VBA Reference]([https://support.microsoft.com/en-us/excel](https://learn.microsoft.com/en-us/office/vba/api/overview/))
+[MS Office VBA Reference]([https://support.microsoft.com/en-us/excel](https://learn.microsoft.com/en-us/office/vba/api/overview/)
 
 ### **Authors and Acknowledgment:**
 
