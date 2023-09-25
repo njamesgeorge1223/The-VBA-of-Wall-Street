@@ -22,23 +22,23 @@ The VBA code for this stock analysis is in the file, StockAnalysisMacro.bas, whi
 
 ----
 
-#### Source code
+#### **Source code**
 
 StockAnalysisMacro.bas
 
-#### Input files
+#### **Input files**
 
 CrowdfundingBook (Unprocessed).xlsx
 
-#### Output files
+#### **Output files**
 
 MultipleYearStockDataComplete2018.xlsm, MultipleYearStockDataComplete2019.xlsm, MultipleYearStockDataComplete2020.xlsm
 
-#### SQL script
+#### **SQL script**
 
 n/a
 
-#### Software
+#### **Software**
 
 MS Excel, MS Visual Studio Code, VBA
 
