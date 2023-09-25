@@ -25,6 +25,16 @@ Attribute VB_Name = "Module1"
  '      CalculateAndWriteChangeDataPrivateSubRoutine
  '      ConvertRangeIntoTablePrivateSubRoutine
  '      FormatYearlyChangeCellPrivateSubRoutine
+ '      CreateWorkSheetPrivateSubRoutine
+ '      FormatAnalysisWorkSheetPrivateSubRoutine
+ '      FormatLocalSummaryDataPrivateSubRoutine
+ '      InsertAnalysisWorkSheetRowAndTitlesPrivateSubRoutine
+ '      SetUpSortedTablesPrivateSubRoutine
+ '      SetUpGreatestIncreaseTablePrivateSubRoutine
+ '      SetUpGreatestDecreaseTablePrivateSubRoutine
+ '      SetUpGreatestTotalVolumeTablePrivateSubRoutine
+ '      CopyTablePrivateSubRoutine
+ '      SortTablePrivateSubRoutine
  '
  '      CalculateYearlyChangePrivateFunction
  '      CalculatePercentChangePrivateFunction
@@ -1950,7 +1960,7 @@ Private Sub _
     End If
 
 End Sub ' This statement ends the private subroutine,
-' CreateAnalysisWorkSheetPrivateSubRoutine.
+' CreateWorkSheetPrivateSubRoutine.
 
 '*******************************************************************************************
  '
@@ -2435,7 +2445,7 @@ Private Sub _
         True
 
 End Sub ' This statement ends the private subroutine,
-' SetUpGreatestIncreaseTablePrivateSubRoutine.
+' SetUpGreatestTotalVolumeTablePrivateSubRoutine.
 
 '*******************************************************************************************
  '
