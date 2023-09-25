@@ -25,6 +25,7 @@ Attribute VB_Name = "Module1"
  '      CalculateAndWriteChangeDataPrivateSubRoutine
  '      ConvertRangeIntoTablePrivateSubRoutine
  '      FormatYearlyChangeCellPrivateSubRoutine
+ '
  '      CreateWorkSheetPrivateSubRoutine
  '      FormatAnalysisWorkSheetPrivateSubRoutine
  '      FormatLocalSummaryDataPrivateSubRoutine
