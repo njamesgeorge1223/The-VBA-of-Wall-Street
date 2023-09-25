@@ -40,7 +40,7 @@ n/a
 
 #### Software
 
-MS Excel, MS Visual Studio Code
+MS Excel, MS Visual Studio Code, VBA
 
 ![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
@@ -97,6 +97,8 @@ MS Excel, MS Visual Studio Code
 [MS Excel Help and Learning](https://support.microsoft.com/en-us/excel)
 
 [MS Office VBA Reference](https://learn.microsoft.com/en-us/office/vba/api/overview/)
+
+----
 
 ### **Authors and Acknowledgment:**
 
