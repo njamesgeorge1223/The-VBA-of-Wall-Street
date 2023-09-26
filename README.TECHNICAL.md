@@ -14,7 +14,7 @@ The only dependency this analysis requires is an installation of MS Excel.
 
 ----
 
-The VBA code for this stock analysis is in the file, StockAnalysisMacro.bas, which has been loaded and run in the following macro-enabled Excel files: MultipleYearStockDataComplete2018.xlsm, MultipleYearStockDataComplete2019.xlsm, and MultipleYearStockDataComplete2020.xlsm; the testing file, AlphabeticalTestingComplete.xlsm, also contains the module.  The Images folder includes images of summary and analysis results; and the Resources folder contains unprocessed starter files.
+The VBA code for this stock analysis is in the file, StockAnalysisMacro.bas, which has been loaded and run in the following macro-enabled Excel files: MultipleYearStockDataComplete2018.xlsm, MultipleYearStockDataComplete2019.xlsm, and MultipleYearStockDataComplete2020.xlsm.  The testing file, AlphabeticalTestingComplete.xlsm, also contains this VBA module.  The Images folder includes images of summary and analysis results; and the Resources folder contains unprocessed starter files.
 
 ----
 
