@@ -37,35 +37,59 @@
 ----
 
 **FormatStockDataPrivateSubRoutine**
+
 **FormatSummaryDataPrivateSubRoutine**
+
 **FormatTitlesPrivateSubRoutine**
+
 **FormatWorkSheetPrivateSubRoutine**
 
 **CreateSummaryTablePrivateSubRoutine**
+
 **CreateChangeTablePrivateSubRoutine**
+
 **ConvertDataAndSummaryRangesToTablesPrivateSubRoutine**
+
 **CreateFormatAnalysisWorkSheetPrivateSubRoutine**
 
 **ChangeStringToDateInDateColumnPrivateSubRoutine**
+
 **SetUpTitlesForSummaryDataPrivateSubRoutine**
+
 **CreateSummaryDataRowPrivateSubRoutine**
+
 **FormatChangeDataTitlesPrivateSubRoutine**
+
 **SetupChangeDataTitlesPrivateSubRoutine**
+
 **CalculateAndWriteChangeDataPrivateSubRoutine**
+
 **ConvertRangeIntoTablePrivateSubRoutine**
+
 **FormatYearlyChangeCellPrivateSubRoutine**
 
 **CreateWorkSheetPrivateSubRoutine**
+
 **FormatAnalysisWorkSheetPrivateSubRoutine**
+
 **FormatLocalSummaryDataPrivateSubRoutine**
+
 **InsertAnalysisWorkSheetRowAndTitlesPrivateSubRoutine**
+
 **SetUpSortedTablesPrivateSubRoutine**
+
 **SetUpGreatestIncreaseTablePrivateSubRoutine**
+
 **SetUpGreatestDecreaseTablePrivateSubRoutine**
+
 **SetUpGreatestTotalVolumeTablePrivateSubRoutine**
+
 **CopyTablePrivateSubRoutine**
+
 **SortTablePrivateSubRoutine**
 
 **CalculateYearlyChangePrivateFunction**
+
 **CalculatePercentChangePrivateFunction**
+
 **ReturnAnalysisWorkSheetNamePrivateFunction**
